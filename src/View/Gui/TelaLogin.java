@@ -14,9 +14,11 @@ import javax.swing.JTextField;
  * @author L.A.A
  */
 public class TelaLogin extends TelaPadrao{
-    private  JLabel lbl_nomeUsuario,lbl_senhaUsuario;
-    private  JTextField txt_nomeUsuario,txt_senhaUsuario;
-    private  JButton btn_logar;
+    
+    private final JLabel lbl_nomeUsuario,lbl_senhaUsuario;
+    private final JTextField txt_nomeUsuario,txt_senhaUsuario;
+    private final JButton btn_logar;
+    
     public TelaLogin() {
         setTitle("Tela de login");
         setSize(300, 400);
