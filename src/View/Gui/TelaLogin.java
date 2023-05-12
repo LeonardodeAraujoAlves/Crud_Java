@@ -5,6 +5,7 @@
  */
 package View.Gui;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -15,7 +16,7 @@ import javax.swing.JTextField;
 public class TelaLogin extends TelaPadrao{
     private  JLabel lbl_nomeUsuario,lbl_senhaUsuario;
     private  JTextField txt_nomeUsuario,txt_senhaUsuario;
-
+    private  JButton btn_logar;
     public TelaLogin() {
         setTitle("Tela de login");
         setSize(300, 400);
@@ -28,16 +29,21 @@ public class TelaLogin extends TelaPadrao{
         txt_nomeUsuario = new JTextField("");
         txt_senhaUsuario = new JTextField("");
         
+        btn_logar = new JButton("Logar");
+        
         lbl_nomeUsuario.setBounds(20, 40, 200, 50);
         lbl_senhaUsuario.setBounds(20,100,200,50);
         
         txt_nomeUsuario.setBounds(20, 80, 200, 30);
         txt_senhaUsuario.setBounds(20, 140, 200, 30);
         
+        btn_logar.setBounds(20, 200, 200, 30);
+        
         add(lbl_nomeUsuario);
         add(lbl_senhaUsuario);
         add(txt_nomeUsuario);
         add(txt_senhaUsuario);
+        add(btn_logar);
         setVisible(true);
     
     }
