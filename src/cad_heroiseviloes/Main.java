@@ -15,6 +15,7 @@ public class Main {
         //try {
         // CadHeroi cad = new CadHeroi();
         //TelaLogin log = new TelaLogin();
+        
         Menu menu = new Menu();
         //} catch (ParseException ex) {
         //    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
