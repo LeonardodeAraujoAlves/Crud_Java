@@ -5,6 +5,7 @@
  */
 package View.Gui;
 
+import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,6 +21,7 @@ public class TelaLogin extends TelaPadrao{
     private final JButton btn_logar;
     
     public TelaLogin() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("login.png")));
         setTitle("Tela de login");
         setSize(300, 400);
         setResizable(false);
@@ -49,6 +51,6 @@ public class TelaLogin extends TelaPadrao{
         setVisible(true);
     
     }
-    
+    //Falta criar os eventos
     
 }

@@ -11,7 +11,7 @@ import java.sql.Statement;
 public class Connection {
            private static String urlJDBC = "jdbc:mysql://localhost:3306/heroiseviloes";
            private static String usuario = "root";
-           private static String senha   = " ";
+           private static String senha   = "";
            
 public static void insereHeroi(String nome_heroi, String identidade_heroi, int idade_heroi,double altura_heroi, String inimigo_heroi){
         
