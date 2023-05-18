@@ -1,6 +1,7 @@
 package cad_heroiseviloes;
 
 import View.Gui.Menu;
+import View.Gui.TelaLogin;
 
 /**
  *
@@ -14,9 +15,9 @@ public class Main {
     public static void main(String[] args) {
         //try {
         // CadHeroi cad = new CadHeroi();
-        //TelaLogin log = new TelaLogin();
+        TelaLogin log = new TelaLogin();
         
-        Menu menu = new Menu();
+        //Menu menu = new Menu();
         //} catch (ParseException ex) {
         //    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         //}

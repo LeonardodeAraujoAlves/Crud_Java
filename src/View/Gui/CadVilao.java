@@ -48,7 +48,7 @@ public class CadVilao extends TelaPadrao {
         txt_alturaVilao      = new JFormattedTextField(new MaskFormatter("#.##"));
         
         btn_cadastrar        = new JButton("Cadastrar vilão");    
-        btn_trocar           = new JButton("Trocar de tela");
+        btn_trocar           = new JButton("Voltar");
         
         lbl_nomeVilao.setBounds(20, 20, 200, 50);
         lbl_organizacaoVilao.setBounds(20, 60, 200, 50);
@@ -123,7 +123,7 @@ public class CadVilao extends TelaPadrao {
  //Agora temos que adicionar os eventos   
     private void trocarDeTela() throws ParseException{
         this.dispose();
-        CadHeroi cadHeroi = new CadHeroi();
+        new Menu();
     }
     
     private void cadastrarVilao() throws  ParseException{

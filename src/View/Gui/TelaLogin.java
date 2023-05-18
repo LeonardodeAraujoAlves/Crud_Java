@@ -6,8 +6,14 @@
 package View.Gui;
 
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -44,6 +50,19 @@ public class TelaLogin extends TelaPadrao{
         
         btn_logar.setBounds(20, 200, 200, 30);
         
+        btn_logar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Logar();
+                    
+                } catch (ParseException ex) {
+                    //Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showInputDialog("Ocorreu um erro ao executar a ação : " + ex);
+                }
+            }
+        });
+        
         add(lbl_nomeUsuario);
         add(lbl_senhaUsuario);
         add(txt_nomeUsuario);
@@ -53,6 +72,15 @@ public class TelaLogin extends TelaPadrao{
         setVisible(true);
     
     }
-    //Falta criar os eventos
     
+    //Pegando os valores dos Campos
+    private void Logar() throws  ParseException{
+        String nome          = txt_nomeUsuario.getText();
+        String senha         = txt_senhaUsuario.getText();
+     
+        System.out.println("Nome :" + nome + " senha :" + senha);
+        
+        this.dispose();
+        new Menu();
+    }
 }

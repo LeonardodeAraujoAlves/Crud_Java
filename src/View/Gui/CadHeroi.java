@@ -41,7 +41,7 @@ public class CadHeroi extends TelaPadrao{
         txt_alturaHeroi     = new JFormattedTextField(new MaskFormatter("#.##"));
         txt_inimigoHeroi    = new JTextField(" ");
         btn_cadastrar       = new JButton("Cadastrar herói");
-        btn_troca           = new JButton("Trocar de tela");
+        btn_troca           = new JButton("Voltar");
         
         lbl_nomeHeroi.setBounds(20, 20, 200, 50);
         lbl_identidateHeroi.setBounds(20, 80, 200, 50);
@@ -102,7 +102,7 @@ public class CadHeroi extends TelaPadrao{
     
     private void trocaDeTela() throws ParseException{
         this.dispose();
-        new CadVilao();
+        new Menu();
     }
     
     private void cadastrarHeroi()throws ParseException{
