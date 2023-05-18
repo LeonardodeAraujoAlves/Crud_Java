@@ -8,11 +8,11 @@ import java.sql.Statement;
  *
  * @author L.A.A
  */
-public class Connection {
+public class Connection  {
            private static String urlJDBC = "jdbc:mysql://localhost:3306/heroiseviloes";
            private static String usuario = "root";
            private static String senha   = "";
-           
+           /*
 public static void insereHeroi(String nome_heroi, String identidade_heroi, int idade_heroi,double altura_heroi, String inimigo_heroi){
         
         try{
@@ -39,7 +39,7 @@ public static void insereHeroi(String nome_heroi, String identidade_heroi, int i
         }
           
 }
-    
+ */   
 public static void insereVilao(String nome_vilao, String organizacao_vilao, double altura_vilao, String inimigo_vilao,String lugar_principal,String arma,int quant_vitimas,String mascote_vilao){
         
         try{

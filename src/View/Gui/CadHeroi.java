@@ -1,6 +1,7 @@
 package View.Gui;
 
 import Controller.Connection;
+import Controller.Heroi;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -113,6 +114,7 @@ public class CadHeroi extends TelaPadrao{
         double altura = Double.parseDouble(txt_alturaHeroi.getText());
         
         try {
+            
             Connection.insereHeroi(nome, identidade, idade, altura, inimigo);
         } catch (Exception e) {
             System.out.println("Ocorreu um erro ao executar o evento :" + e);
