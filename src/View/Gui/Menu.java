@@ -1,6 +1,7 @@
 package View.Gui;
 
 import Controller.Connection;
+import Controller.Vilao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -138,7 +139,7 @@ public class Menu extends JFrame {
     }
     
     private void mostrarVilao()throws ParseException{
-        Connection.mostraVilao();
+      //  Vilao vila = new Vilao(nome, organizacao, ABORT, inimigo, lugaPrincipal, arma, FRAMEBITS, mascote);
     }
 
 }
