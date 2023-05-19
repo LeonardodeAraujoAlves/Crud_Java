@@ -35,11 +35,11 @@ public class CadHeroi extends TelaPadrao{
         lbl_alturaHeroi     = new JLabel("Altura do heroi :");
         lbl_inimigoHeroi    = new JLabel("Inimigo do heroi");
         
-        txt_nomeHeroi       = new JTextField(" ");
-        txt_identidateHeroi = new JTextField(" ");
-        txt_idadeHeroi      = new JTextField(" ");
+        txt_nomeHeroi       = new JTextField("");
+        txt_identidateHeroi = new JTextField("");
+        txt_idadeHeroi      = new JTextField("");
         txt_alturaHeroi     = new JFormattedTextField(new MaskFormatter("#.##"));
-        txt_inimigoHeroi    = new JTextField(" ");
+        txt_inimigoHeroi    = new JTextField("");
         btn_cadastrar       = new JButton("Cadastrar herói");
         btn_troca           = new JButton("Voltar");
         
@@ -108,14 +108,15 @@ public class CadHeroi extends TelaPadrao{
     private void cadastrarHeroi()throws ParseException{
         String nome       = txt_nomeHeroi.getText(),
                identidade = txt_identidateHeroi.getText(),
-               inimigo    = txt_inimigoHeroi.getText();
+               inimigo    = txt_inimigoHeroi.getText(),
+                age = txt_idadeHeroi.getText();
         
-        int idade = Integer.parseInt(txt_idadeHeroi.getText());
+        int idade = Integer.parseInt(age);
         double altura = Double.parseDouble(txt_alturaHeroi.getText());
         
         try {
-            
-            Connection.insereHeroi(nome, identidade, idade, altura, inimigo);
+            Heroi cadH = new Heroi(nome, identidade, idade, altura, inimigo);
+            cadH.inserir(nome, identidade, idade, altura, inimigo);
         } catch (Exception e) {
             System.out.println("Ocorreu um erro ao executar o evento :" + e);
         }
