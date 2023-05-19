@@ -102,7 +102,7 @@ public class CadHeroi extends TelaPadrao{
     
     private void trocaDeTela() throws ParseException{
         this.dispose();
-        new Menu();
+        Menu menu = new Menu();
     }
     
     private void cadastrarHeroi()throws ParseException{

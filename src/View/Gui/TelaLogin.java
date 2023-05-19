@@ -9,8 +9,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -57,8 +55,7 @@ public class TelaLogin extends TelaPadrao{
                     Logar();
                     
                 } catch (ParseException ex) {
-                    //Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showInputDialog("Ocorreu um erro ao executar a ação : " + ex);
+                    JOptionPane.showMessageDialog(null,"Ocorreu um erro ao executar a ação :" +  ex);
                 }
             }
         });
@@ -75,12 +72,12 @@ public class TelaLogin extends TelaPadrao{
     
     //Pegando os valores dos Campos
     private void Logar() throws  ParseException{
-        String nome          = txt_nomeUsuario.getText();
-        String senha         = txt_senhaUsuario.getText();
+        String nome    = txt_nomeUsuario.getText();
+        String senha   = txt_senhaUsuario.getText();
      
         System.out.println("Nome :" + nome + " senha :" + senha);
         
         this.dispose();
-        new Menu();
+        Menu menu = new Menu();
     }
 }

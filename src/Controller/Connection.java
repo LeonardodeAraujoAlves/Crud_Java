@@ -1,8 +1,10 @@
 package Controller;
 
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,7 +13,7 @@ import java.sql.Statement;
 public class Connection  {
            private static String urlJDBC = "jdbc:mysql://localhost:3306/heroiseviloes";
            private static String usuario = "root";
-           private static String senha   = "";
+           private static String senha   = "751204Laa.15";
            
            
            
@@ -56,6 +58,40 @@ public static void insereVilao(String nome_vilao, String organizacao_vilao, doub
                    System.out.println(cmd);
                    Statement inserir = (Statement) conexao.createStatement();
                    inserir.execute(cmd);
+                   conexao.close();
+               }else{
+                   System.out.println("Ocorreu um erro ao conectar a base de dados");
+               }
+
+        }catch(SQLException exsql){
+               System.out.println("Ocorreu um erro ao acessar o banco de dados :" + exsql);
+        }catch(ClassNotFoundException exClasse){
+               System.err.println("Ocorreu um erro ao tentar carregar a clasee :" + exClasse);
+        }
+    }
+
+public static void mostraVilao(){
+        
+        try{
+           Class.forName("com.mysql.jdbc.Driver");
+           
+           java.sql.Connection conexao = (java.sql.Connection) DriverManager.getConnection(urlJDBC,usuario,senha);
+
+               if(conexao != null){
+                   System.out.println("Banco acessado com sucesso");
+                   String cmd ="SELECT * VILAO"; 
+                   System.out.println(cmd);
+                   Statement mostrar = (Statement) conexao.createStatement();
+                   mostrar.execute(cmd);
+                   System.out.println(mostrar);
+                   
+                   ResultSet resultado = mostrar.executeQuery(cmd) ;
+                   
+                   while(resultado.next()){
+                       System.out.println( resultado.getString("VILAO"));
+                       JOptionPane.showMessageDialog(null, resultado.getString("NOME_VILAO"));
+                       
+                   }
                    conexao.close();
                }else{
                    System.out.println("Ocorreu um erro ao conectar a base de dados");

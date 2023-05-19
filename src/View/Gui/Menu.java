@@ -1,5 +1,6 @@
 package View.Gui;
 
+import Controller.Connection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -49,13 +50,13 @@ public class Menu extends JFrame {
         btn_mostraVilao.setBounds(20, 180, 150, 30);
         btn_mostrarUsr.setBounds(20, 220, 150, 30);
 
-        btn_alteraHero.setBounds(200, 20, 150, 30);
-        btn_alteraVilao.setBounds(200, 60, 150, 30);
-        btn_alteraUsr.setBounds(200, 100, 150, 30);
+        btn_alteraHero.setBounds(300, 20, 150, 30);
+        btn_alteraVilao.setBounds(300, 60, 150, 30);
+        btn_alteraUsr.setBounds(300, 100, 150, 30);
 
-        btn_deletaHero.setBounds(200, 140, 150, 30);
-        btn_deletaVilao.setBounds(200, 180, 150, 30);
-        btn_deletaUsr.setBounds(200, 220, 150, 30);
+        btn_deletaHero.setBounds(300, 140, 150, 30);
+        btn_deletaVilao.setBounds(300, 180, 150, 30);
+        btn_deletaUsr.setBounds(300, 220, 150, 30);
 
         btn_cadHeroi.addActionListener(new ActionListener() {
             @Override
@@ -86,6 +87,17 @@ public class Menu extends JFrame {
                     CadUsr();
                 } catch (ParseException ex) {
                     System.out.println("Ocorreu um erro ao executar a ação :" + ex);
+                }
+            }
+        });
+        
+        btn_mostraVilao.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    mostrarVilao();
+                } catch (ParseException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -123,6 +135,10 @@ public class Menu extends JFrame {
     private void CadUsr() throws ParseException {
         this.dispose();
         Cad_User cad_User = new Cad_User();
+    }
+    
+    private void mostrarVilao()throws ParseException{
+        Connection.mostraVilao();
     }
 
 }
