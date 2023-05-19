@@ -5,7 +5,9 @@
         <group>
             <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/View/Gui/TelaLogin.java</file>
             <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/Controller/Connection.java</file>
+            <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/test/Controller/ConnectionTest.java</file>
             <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/View/Gui/Menu.java</file>
+            <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/Controller/Template/BDObject.java</file>
             <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/Controller/Heroi.java</file>
             <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/View/Gui/CadHeroi.java</file>
         </group>

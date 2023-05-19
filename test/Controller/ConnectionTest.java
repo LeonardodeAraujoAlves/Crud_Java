@@ -48,9 +48,8 @@ public class ConnectionTest {
         int idade_heroi = 0;
         double altura_heroi = 0.0;
         String inimigo_heroi = "";
-        Connection.insereHeroi(nome_heroi, identidade_heroi, idade_heroi, altura_heroi, inimigo_heroi);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Heroi h = new Heroi(nome_heroi, identidade_heroi, idade_heroi, altura_heroi, inimigo_heroi);
+        h.inserir(nome_heroi, identidade_heroi, idade_heroi, altura_heroi, inimigo_heroi);
     }
 
     /**
