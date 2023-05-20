@@ -1,5 +1,6 @@
-package View.Gui;
+package View.Gui.User;
 
+import View.Gui.TelaPadrao;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JLabel;

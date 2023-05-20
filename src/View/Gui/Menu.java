@@ -1,5 +1,8 @@
 package View.Gui;
 
+import View.Gui.User.Cad_User;
+import View.Gui.Vilao.CadVilao;
+import View.Gui.Heroi.CadHeroi;
 import Controller.ConnectionSingleton;
 import Controller.Vilao;
 import java.awt.event.ActionEvent;

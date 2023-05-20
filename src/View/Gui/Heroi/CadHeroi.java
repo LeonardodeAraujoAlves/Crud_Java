@@ -1,7 +1,9 @@
-package View.Gui;
+package View.Gui.Heroi;
 
 import Controller.ConnectionSingleton;
 import Controller.Heroi;
+import View.Gui.Menu;
+import View.Gui.TelaPadrao;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

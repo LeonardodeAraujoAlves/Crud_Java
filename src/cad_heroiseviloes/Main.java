@@ -4,7 +4,7 @@ package cad_heroiseviloes;
 
 import Controller.ConnectionSingleton;
 import View.Gui.Menu;
-import View.Gui.TelaLogin;
+import View.Gui.Login.TelaLogin;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
