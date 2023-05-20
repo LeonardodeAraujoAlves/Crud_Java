@@ -6,7 +6,7 @@
 package Controller;
 
 import Controller.Template.BDObject;
-import java.sql.DriverManager;
+
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -28,7 +28,9 @@ public class Heroi extends BDObject {
     public Heroi(String nome, String identidade, int idade, double altura, String inimigo) {
 
     }
-
+        
+        ConnectionSingleton singleton  = ConnectionSingleton.getInstancy();
+       
     public void inserir(String nome_heroi, String identidade_heroi, int idade_heroi, double altura_heroi, String inimigo_heroi) {
 
         try {

@@ -1,6 +1,6 @@
 package View.Gui;
 
-import Controller.Connection;
+import Controller.ConnectionSingleton;
 import Controller.Vilao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

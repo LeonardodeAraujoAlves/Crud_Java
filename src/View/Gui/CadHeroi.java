@@ -1,6 +1,6 @@
 package View.Gui;
 
-import Controller.Connection;
+import Controller.ConnectionSingleton;
 import Controller.Heroi;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;

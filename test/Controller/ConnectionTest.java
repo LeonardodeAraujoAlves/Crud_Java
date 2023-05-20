@@ -66,7 +66,7 @@ public class ConnectionTest {
         String arma = "";
         int quant_vitimas = 0;
         String mascote_vilao = "";
-        Connection.insereVilao(nome_vilao, organizacao_vilao, altura_vilao, inimigo_vilao, lugar_principal, arma, quant_vitimas, mascote_vilao);
+        ConnectionSingleton.insereVilao(nome_vilao, organizacao_vilao, altura_vilao, inimigo_vilao, lugar_principal, arma, quant_vitimas, mascote_vilao);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
