@@ -2,7 +2,7 @@ package cad_heroiseviloes;
 
 
 
-import Controller.ConnectionManeira;
+import Controller.ConnectionSingleton;
 import View.Gui.Menu;
 import View.Gui.TelaLogin;
 import java.sql.Connection;
@@ -23,7 +23,7 @@ public class Main {
         //try {
         // CadHeroi cad = new CadHeroi();
        
-        ConnectionManeira inst = ConnectionManeira.getInstancy();
+        ConnectionSingleton inst = ConnectionSingleton.getInstancy();
         Connection con =  inst.getConexao();
         TelaLogin log = new TelaLogin();
         
