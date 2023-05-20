@@ -29,7 +29,7 @@ public class Heroi extends BDObject {
         inimigo = this.inimigo;
     }
 
-    public synchronized void inserir(String nome_heroi, String identidade_heroi, int idade_heroi, double altura_heroi, String inimigo_heroi) {
+    public  void inserir(String nome_heroi, String identidade_heroi, int idade_heroi, double altura_heroi, String inimigo_heroi) {
 
         try {
             String query = "INSERT INTO HEROI VALUES (?,?,?,?,?)";
