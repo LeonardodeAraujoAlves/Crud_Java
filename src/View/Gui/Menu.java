@@ -138,7 +138,7 @@ public class Menu extends JFrame {
     
     private void CadUsr() throws ParseException {
         this.dispose();
-        Cad_User cad_User = new Cad_User();
+        Cad_User cadastraUsuario = new Cad_User();
     }
     
     private void mostrarVilao()throws ParseException{

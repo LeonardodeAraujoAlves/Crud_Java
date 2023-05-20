@@ -1,11 +1,9 @@
 package Controller;
 
 import Controller.Template.BDObject;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,36 +11,33 @@ import javax.swing.JOptionPane;
  */
 public class Vilao extends BDObject {
 
-    private static String urlJDBC = "jdbc:mysql://localhost:3306/heroiseviloes";
-    private static String usuario = "root";
-    private static String senha = "751204Laa.15";
+    ConnectionSingleton inst = ConnectionSingleton.getInstancy();
+    Connection con = inst.getConexao();
 
     public Vilao(String nome, String organizacao, double altura, String inimigo, String lugaPrincipal, String arma, int quant_vitimas, String mascote) {
 
     }
 
-    public void inserir(String nome_vilao, String organizacao_vilao, double altura_vilao, String inimigo_vilao, String lugar_principal, String arma, int quant_vitimas, String mascote_vilao) {
+    public synchronized void  inserir(String nome_vilao, String organizacao_vilao, double altura_vilao, String inimigo_vilao, String lugar_principal, String arma, int quant_vitimas, String mascote_vilao) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            String query = "INSERT INTO VILAO VALUES (?,?,?,?,?,?,?,?)";
+            PreparedStatement pst = con.prepareStatement(query);
 
-            java.sql.Connection conexao = (java.sql.Connection) DriverManager.getConnection(urlJDBC, usuario, senha);
+            pst.setString(1, nome_vilao);
+            pst.setString(2, organizacao_vilao);
+            pst.setDouble(3, altura_vilao);
+            pst.setString(4, inimigo_vilao);
+            pst.setString(5, lugar_principal);
+            pst.setString(6, arma);
+            pst.setInt(7, quant_vitimas);
+            pst.setString(8, mascote_vilao);
 
-            if (conexao != null) {
-                System.out.println("Banco acessado com sucesso");
-                String cmd = "INSERT INTO VILAO (nome_vilao, organizacao_vilao, altura_vilao,inimigo_vilao, lugar_principal,arma,quant_vitimas,mascote_vilao) VALUES"
-                        + "('" + nome_vilao + "','" + organizacao_vilao + "','" + altura_vilao + "','" + inimigo_vilao + "','" + lugar_principal + "','" + arma + "','" + quant_vitimas + "','" + mascote_vilao + "')";
-                System.out.println(cmd);
-                Statement inserir = (Statement) conexao.createStatement();
-                inserir.execute(cmd);
-                conexao.close();
-            } else {
-                System.out.println("Ocorreu um erro ao conectar a base de dados");
-            }
+            pst.executeUpdate();
 
-        } catch (SQLException exsql) {
-            System.out.println("Ocorreu um erro ao acessar o banco de dados :" + exsql);
-        } catch (ClassNotFoundException exClasse) {
-            System.err.println("Ocorreu um erro ao tentar carregar a clasee :" + exClasse);
+            System.out.println("Inerção realizada com sucesso");
+
+        } catch (SQLException ex) {
+            System.out.println("Ocorreu um erro ao inserir no banco de dados :" + ex);
         }
     }
 
@@ -58,7 +53,7 @@ public class Vilao extends BDObject {
 
     @Override
     public void mostrar() {
-
+        /*
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
@@ -88,6 +83,9 @@ public class Vilao extends BDObject {
             System.out.println("Ocorreu um erro ao acessar o banco de dados :" + exsql);
         } catch (ClassNotFoundException exClasse) {
             System.err.println("Ocorreu um erro ao tentar carregar a clasee :" + exClasse);
-        }
+
+}
+         */
     }
+
 }

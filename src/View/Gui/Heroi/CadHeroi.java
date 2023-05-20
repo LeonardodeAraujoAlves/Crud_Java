@@ -1,6 +1,5 @@
 package View.Gui.Heroi;
 
-import Controller.ConnectionSingleton;
 import Controller.Heroi;
 import View.Gui.Menu;
 import View.Gui.TelaPadrao;
@@ -37,7 +36,7 @@ public class CadHeroi extends TelaPadrao{
         lbl_alturaHeroi     = new JLabel("Altura do heroi :");
         lbl_inimigoHeroi    = new JLabel("Inimigo do heroi");
         
-        txt_nomeHeroi       = new JTextField("");
+        txt_nomeHeroi       = new JTextField(null);
         txt_identidateHeroi = new JTextField("");
         txt_idadeHeroi      = new JTextField("");
         txt_alturaHeroi     = new JFormattedTextField(new MaskFormatter("#.##"));
@@ -110,15 +109,14 @@ public class CadHeroi extends TelaPadrao{
     private void cadastrarHeroi()throws ParseException{
         String nome       = txt_nomeHeroi.getText(),
                identidade = txt_identidateHeroi.getText(),
-               inimigo    = txt_inimigoHeroi.getText(),
-                age = txt_idadeHeroi.getText();
+               inimigo    = txt_inimigoHeroi.getText();
         
-        int idade = Integer.parseInt(age);
+        int idade = Integer.parseInt(txt_idadeHeroi.getText());
         double altura = Double.parseDouble(txt_alturaHeroi.getText());
-        
+       
         try {
-            Heroi cadH = new Heroi(nome, identidade, idade, altura, inimigo);
-            cadH.inserir(nome, identidade, idade, altura, inimigo);
+            Heroi hero = new Heroi(nome, identidade, idade, altura, inimigo);
+            hero.inserir(nome, identidade, idade, altura, inimigo);
         } catch (Exception e) {
             System.out.println("Ocorreu um erro ao executar o evento :" + e);
         }

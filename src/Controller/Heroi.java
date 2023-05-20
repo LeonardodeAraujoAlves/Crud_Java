@@ -12,18 +12,24 @@ import java.sql.SQLException;
  */
 public class Heroi extends BDObject {
 
-    private static String urlJDBC = "jdbc:mysql://localhost:3306/heroiseviloes";
-    private static String usuario = "root";
-    private static String senha = "751204Laa.15";
-
     ConnectionSingleton inst = ConnectionSingleton.getInstancy();
     Connection con = inst.getConexao();
+    
+    private String nome;
+    private String identidade;
+    private int idade;
+    private double altura;
+    private String inimigo;
 
     public Heroi(String nome, String identidade, int idade, double altura, String inimigo) {
-
+        nome = this.nome;
+        identidade = this.identidade;
+        idade = this.idade;
+        altura = this. altura;
+        inimigo = this.inimigo;
     }
 
-    public void inserir(String nome_heroi, String identidade_heroi, int idade_heroi, double altura_heroi, String inimigo_heroi) {
+    public synchronized void inserir(String nome_heroi, String identidade_heroi, int idade_heroi, double altura_heroi, String inimigo_heroi) {
 
         try {
             String query = "INSERT INTO HEROI VALUES (?,?,?,?,?)";
@@ -37,7 +43,7 @@ public class Heroi extends BDObject {
 
             pst.executeUpdate();
 
-            System.out.println("Fino do fino");
+            System.out.println("Inerção realizada com sucesso");
 
         } catch (SQLException ex) {
             System.out.println("Ocorreu um erro ao inserir no banco de dados :" + ex);
