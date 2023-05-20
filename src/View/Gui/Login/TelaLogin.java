@@ -79,7 +79,7 @@ public class TelaLogin extends TelaPadrao {
 
         Autenticacao autent = new Autenticacao(nome, senha);
 
-        autent.Acessa(nome, senha);
+        //autent.Acessa(nome, senha);
 
         if (autent.Acessa(nome, senha) == true) {
             this.dispose();
