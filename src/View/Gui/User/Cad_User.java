@@ -69,7 +69,7 @@ public class Cad_User extends TelaPadrao {
         
         setVisible(true);
     }
-    private void CadastraUsuarios(){
+    private synchronized void CadastraUsuarios(){
     String nomeuser  = txt_nomeUsuario.getText();
     String senhauser = txt_senhaUsuario.getText();
     

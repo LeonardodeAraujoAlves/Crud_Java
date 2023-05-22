@@ -23,8 +23,8 @@ public class Main {
         //try {
         // CadHeroi cad = new CadHeroi();
        
-        ConnectionSingleton inst = ConnectionSingleton.getInstancy();
-        Connection con =  inst.getConexao();
+       // ConnectionSingleton inst = ConnectionSingleton.getInstancy();
+        //Connection con =  inst.getConexao();
         TelaLogin log = new TelaLogin();
         
     
