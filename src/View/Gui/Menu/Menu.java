@@ -1,5 +1,6 @@
-package View.Gui;
+package View.Gui.Menu;
 
+import Controller.Heroi;
 import View.Gui.User.Cad_User;
 import View.Gui.Vilao.CadVilao;
 import View.Gui.Heroi.CadHeroi;
@@ -102,6 +103,9 @@ public class Menu extends JFrame {
             }
         });
         
+        btn_mostrarHero.addActionListener((ActionEvent e) -> {
+            mostrarHeroi();
+        });
         
         btn_sair.addActionListener((ActionEvent e) -> {
             sair();
@@ -150,5 +154,8 @@ public class Menu extends JFrame {
     private void mostrarVilao()throws ParseException{
       //  Vilao vila = new Vilao(nome, organizacao, ABORT, inimigo, lugaPrincipal, arma, FRAMEBITS, mascote);
     }
-
+    private void mostrarHeroi(){
+        Heroi miau = new Heroi();
+        miau.mostrar();
+    }
 }

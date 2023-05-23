@@ -1,8 +1,9 @@
 package View.Gui.User;
 
 import Controller.Usuario;
-import View.Gui.Menu;
+import View.Gui.Login.TelaLogin;
 import View.Gui.TelaPadrao;
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -60,6 +61,14 @@ public class Cad_User extends TelaPadrao {
             }
         });
         
+        btn_cadastrar.setContentAreaFilled(false);
+        btn_cadastrar.setOpaque(true);
+        btn_cadastrar.setBackground(Color.GREEN);
+        
+        btn_voltar.setContentAreaFilled(false);
+        btn_voltar.setOpaque(true);
+        btn_voltar.setBackground(Color.YELLOW);
+        
         add(lbl_nomeUsuario);
         add(lbl_senhaUsuario);
         add(txt_nomeUsuario);
@@ -80,8 +89,8 @@ public class Cad_User extends TelaPadrao {
         }
     }
     
-    private void voltar(){
+    private void voltar ( ){
         this.dispose();
-        Menu menu = new Menu();
+        TelaLogin login = new TelaLogin();
     }
 }

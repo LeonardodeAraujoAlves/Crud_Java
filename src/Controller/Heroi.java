@@ -3,8 +3,10 @@ package Controller;
 import Controller.Template.BDObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,6 +30,8 @@ public class Heroi extends BDObject {
         altura = this. altura;
         inimigo = this.inimigo;
     }
+    
+    public Heroi(){}
 
     public  void inserir(String nome_heroi, String identidade_heroi, int idade_heroi, double altura_heroi, String inimigo_heroi) {
 
@@ -61,7 +65,29 @@ public class Heroi extends BDObject {
 
     @Override
     public void mostrar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            String query = "SELECT * FROM HEROI";   
+            
+            PreparedStatement pst =  con.prepareStatement(query);
+            
+            ResultSet rst = pst.executeQuery();
+            
+            System.out.println("Resultado da pesquisa");
+            
+            while(rst.next()){
+                System.out.println("#####################################################");
+                System.out.println("Nome :" + rst.getString("nome_heroi"));
+                System.out.println("identidade :" + rst.getString("identidade_heroi"));
+                System.out.println("idade :" + rst.getString("idade_heroi"));
+                System.out.println("altura :" + rst.getString("inimigo_heroi"));
+                System.out.println("inimigo :" + rst.getString("nome_heroi"));
+                System.out.println("#####################################################");
+                
+                //JOptionPane.showMessageDialog(null, "Nome :" + rst.getString("nome_heroi"));
+            }
+        }catch(SQLException ex){
+            System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
+        }
     }
 
 }

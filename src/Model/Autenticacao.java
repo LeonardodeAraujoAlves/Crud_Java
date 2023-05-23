@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,12 +30,12 @@ public class Autenticacao {
             pst.setString(2, senha);
 
             ResultSet rs = pst.executeQuery();
+            
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Logado com sucesso");
                 return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos");
-
             }
 
         } catch (SQLException ex) {

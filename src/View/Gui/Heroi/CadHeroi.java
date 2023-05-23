@@ -1,7 +1,7 @@
 package View.Gui.Heroi;
 
 import Controller.Heroi;
-import View.Gui.Menu;
+import View.Gui.Menu.Menu;
 import View.Gui.TelaPadrao;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;

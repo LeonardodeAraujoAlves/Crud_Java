@@ -6,7 +6,7 @@
 package View.Gui.Login;
 
 import Model.Autenticacao;
-import View.Gui.Menu;
+import View.Gui.Menu.Menu;
 import View.Gui.TelaPadrao;
 import View.Gui.User.Cad_User;
 import java.awt.Color;
