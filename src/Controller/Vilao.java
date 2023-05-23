@@ -3,7 +3,9 @@ package Controller;
 import Controller.Template.BDObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +19,11 @@ public class Vilao extends BDObject {
     public Vilao(String nome, String organizacao, double altura, String inimigo, String lugaPrincipal, String arma, int quant_vitimas, String mascote) {
 
     }
+    
+    public Vilao(){
+    
+    };
+    
 
     public synchronized void  inserir(String nome_vilao, String organizacao_vilao, double altura_vilao, String inimigo_vilao, String lugar_principal, String arma, int quant_vitimas, String mascote_vilao) {
         try {
@@ -52,40 +59,39 @@ public class Vilao extends BDObject {
     }
 
     @Override
-    public void mostrar() {
-        /*
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-
-            java.sql.Connection conexao = (java.sql.Connection) DriverManager.getConnection(urlJDBC, usuario, senha);
-
-            if (conexao != null) {
-                System.out.println("Banco acessado com sucesso");
-                String cmd = "SELECT * VILAO";
-                System.out.println(cmd);
-                Statement mostrar = (Statement) conexao.createStatement();
-                mostrar.execute(cmd);
-                System.out.println(mostrar);
-
-                ResultSet resultado = mostrar.executeQuery(cmd);
-
-                while (resultado.next()) {
-                    System.out.println(resultado.getString("VILAO"));
-                    JOptionPane.showMessageDialog(null, resultado.getString("NOME_VILAO"));
-
-                }
-                conexao.close();
-            } else {
-                System.out.println("Ocorreu um erro ao conectar a base de dados");
+   public void mostrar() {
+        try{
+            String query = "SELECT * FROM VILAO";   
+            
+            PreparedStatement pst =  con.prepareStatement(query);
+            
+            ResultSet rst = pst.executeQuery();
+            
+            System.out.println("Resultado da pesquisa");
+            
+            while(rst.next()){
+                
+                System.out.println("Nome :" + rst.getString("nome_vilao"));
+                System.out.println("Organização :" + rst.getString("organizacao_vilao"));
+                System.out.println("altura :" + rst.getString("altura_vilao"));
+                System.out.println("inimigo :" + rst.getString("inimigo_vilao"));
+                System.out.println("Lugar principal :" + rst.getString("lugar_principal"));
+                System.out.println("Arma :" + rst.getString("arma"));
+                System.out.println("Quantidade de vitimas :" + rst.getString("quant_vitimas"));
+                System.out.println("Mascote :" + rst.getString("mascote_vilao"));
+                System.out.println("#####################################################");
+                /*
+                JOptionPane.showMessageDialog(null, "Nome :" + rst.getString("nome_heroi") +"\n"+
+                        "identidade :" + rst.getString("identidade_heroi")+"\n"+
+                        "idade :" + rst.getString("idade_heroi")+"\n"+
+                        "altura :" + rst.getString("altura_heroi")+"\n"+
+                        "inimigo :" + rst.getString("inimigo_heroi")
+                        );
+*/
             }
-
-        } catch (SQLException exsql) {
-            System.out.println("Ocorreu um erro ao acessar o banco de dados :" + exsql);
-        } catch (ClassNotFoundException exClasse) {
-            System.err.println("Ocorreu um erro ao tentar carregar a clasee :" + exClasse);
-
-}
-         */
+        }catch(SQLException ex){
+            System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
+        }
     }
 
 }

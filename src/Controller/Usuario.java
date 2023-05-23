@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +23,8 @@ public class Usuario extends BDObject {
         nome = this.nome;
         senha = this.senha;
     }
+    
+    public Usuario(){}
 
     public void inserir(String nome, String senha) {
         try {
@@ -44,23 +45,50 @@ public class Usuario extends BDObject {
 
     @Override
     public void mostrar() {
-        
-        try {
-            String query = "SELECT * FROM USUARIO";
-            PreparedStatement pst = con.prepareStatement(query);
+        try{
+            String query = "SELECT * FROM USUARIO";   
             
-            ResultSet rst = pst.executeQuery(query);
+            PreparedStatement pst =  con.prepareStatement(query);
             
-            ArrayList<String> usuarios = new ArrayList<String>();
+            ResultSet rst = pst.executeQuery();
             
-                while(rst.next()){
-                 //   usuarios.add(rst.)
-                }
-        } catch (SQLException ex) {
-            System.out.println("Ocorreu um erro ao listar os usuarios: " + ex);
+            System.out.println("Resultado da pesquisa");
+            
+            while(rst.next()){
+                
+                System.out.println("Nome :" + rst.getString("nome"));
+                System.out.println("Senha :" + rst.getString("senha"));
+                System.out.println("#####################################################");
+                /*
+                JOptionPane.showMessageDialog(null, "Nome :" + rst.getString("nome_heroi") +"\n"+
+                        "identidade :" + rst.getString("identidade_heroi")+"\n"+
+                        "idade :" + rst.getString("idade_heroi")+"\n"+
+                        "altura :" + rst.getString("altura_heroi")+"\n"+
+                        "inimigo :" + rst.getString("inimigo_heroi")
+                        );
+*/
+            }
+        }catch(SQLException ex){
+            System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
         }
-        
     }
-    
-    
+
+    public void deletar(String Nome){
+		try{
+			String query = "DELETE FROM USUARIO WHERE NOME = ?";
+			PreparedStatement pst = con.prepareStatement(query);			
+			
+			pst.setString(1, Nome);
+			
+			int resultado = pst.executeUpdate();
+			
+			if(resultado > 0){
+				System.out.println("### Registro eliminado com sucesso. ###");
+			}else{
+				System.out.println("### Nenhum registro eliminado. ###");
+			} 
+		}catch(SQLException e){
+			System.out.println("Ocorreu um erro ao tentar deletar o registro :" + e);
+		}
+	}
 }

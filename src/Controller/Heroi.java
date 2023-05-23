@@ -83,7 +83,12 @@ public class Heroi extends BDObject {
                 System.out.println("inimigo :" + rst.getString("nome_heroi"));
                 System.out.println("#####################################################");
                 
-                //JOptionPane.showMessageDialog(null, "Nome :" + rst.getString("nome_heroi"));
+                JOptionPane.showMessageDialog(null, "Nome :" + rst.getString("nome_heroi") +"\n"+
+                        "identidade :" + rst.getString("identidade_heroi")+"\n"+
+                        "idade :" + rst.getString("idade_heroi")+"\n"+
+                        "altura :" + rst.getString("altura_heroi")+"\n"+
+                        "inimigo :" + rst.getString("inimigo_heroi")
+                        );
             }
         }catch(SQLException ex){
             System.out.println("Ocorreu um erro ao exibit os registros:" + ex);

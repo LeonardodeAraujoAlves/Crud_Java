@@ -1,6 +1,8 @@
 package View.Gui.Menu;
 
 import Controller.Heroi;
+import Controller.Usuario;
+import Controller.Vilao;
 import View.Gui.User.Cad_User;
 import View.Gui.Vilao.CadVilao;
 import View.Gui.Heroi.CadHeroi;
@@ -107,6 +109,14 @@ public class Menu extends JFrame {
             mostrarHeroi();
         });
         
+        btn_mostrarUsr.addActionListener((ActionEvent e) -> {
+            mostrarUsuario();
+        });
+        
+        btn_deletaUsr.addActionListener((ActionEvent e) -> {
+            deletarUsuario();
+        });
+        
         btn_sair.addActionListener((ActionEvent e) -> {
             sair();
         });
@@ -152,10 +162,22 @@ public class Menu extends JFrame {
         TelaLogin telaLogin = new TelaLogin();
     }
     private void mostrarVilao()throws ParseException{
-      //  Vilao vila = new Vilao(nome, organizacao, ABORT, inimigo, lugaPrincipal, arma, FRAMEBITS, mascote);
+      Vilao vilao = new Vilao();
+      vilao.mostrar();
     }
     private void mostrarHeroi(){
         Heroi miau = new Heroi();
         miau.mostrar();
+    }
+    
+    private void mostrarUsuario(){
+        Usuario user = new Usuario();
+        user.mostrar();
+    }
+    
+    private void deletarUsuario(){
+        String nome = "Shingeu";
+        Usuario user = new Usuario();
+        user.deletar(nome);
     }
 }

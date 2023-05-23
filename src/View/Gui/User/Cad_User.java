@@ -32,7 +32,7 @@ public class Cad_User extends TelaPadrao {
         lbl_nomeUsuario  = new JLabel("Nome do novo usuario:");
         lbl_senhaUsuario = new JLabel("Senha do novo usuario:");
         
-        txt_nomeUsuario = new JTextField("");
+        txt_nomeUsuario = new JTextField();
         txt_senhaUsuario = new JPasswordField();
         
         btn_cadastrar = new JButton("Cadastrar");
