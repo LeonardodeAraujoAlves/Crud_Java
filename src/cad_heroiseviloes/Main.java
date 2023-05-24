@@ -6,6 +6,7 @@ import Controller.ConnectionSingleton;
 import View.Gui.Heroi.DeletaHeroi;
 import View.Gui.Menu.Menu;
 import View.Gui.Login.TelaLogin;
+import View.Gui.User.DeletaUsuario;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -26,9 +27,9 @@ public class Main {
        
        // ConnectionSingleton inst = ConnectionSingleton.getInstancy();
         //Connection con =  inst.getConexao();
-        TelaLogin log = new TelaLogin();
+       //TelaLogin log = new TelaLogin();
        // DeletaHeroi del = new DeletaHeroi();
-    
+        DeletaUsuario usr = new DeletaUsuario();
         //Menu menu = new Menu();
         //} catch (ParseException ex) {
         //    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

@@ -55,10 +55,12 @@ public class Heroi extends BDObject {
         }
     }
 
+    @Override
     public void atualizar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
     public void deletar(String nome) {
         try {
             String query = "DELETE FROM HEROI WHERE NOME_HEROI = ?";

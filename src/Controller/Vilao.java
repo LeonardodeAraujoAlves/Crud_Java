@@ -55,7 +55,7 @@ public class Vilao extends BDObject {
 
     public synchronized void deletar(String nome) {
         try {
-            String query = "DELETE FROM VILAO WHERE nome_vilao = ?";
+            String query = "DELETE FROM VILAO WHERE NOME_VILAO = ?";
             PreparedStatement pst = con.prepareStatement(query);
 
             pst.setString(1, nome);
@@ -63,9 +63,9 @@ public class Vilao extends BDObject {
             int resultado = pst.executeUpdate();
 
             if (resultado > 0) {
-                JOptionPane.showMessageDialog(null, "Registro eliminado com sucesso.");
+                System.out.println("### Registro eliminado com sucesso. ###");
             } else {
-                JOptionPane.showMessageDialog(null, "Nenhum registro eliminado.");
+                System.out.println("### Nenhum registro eliminado. ###");
             }
         } catch (SQLException e) {
             System.out.println("Ocorreu um erro ao tentar deletar o registro :" + e);
