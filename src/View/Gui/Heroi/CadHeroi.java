@@ -59,14 +59,11 @@ public class CadHeroi extends TelaPadrao{
         btn_cadastrar.setBounds(20, 360, 200, 40);
         btn_troca.setBounds(40, 450, 200, 60);
         
-        btn_cadastrar.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                try{
-                    cadastrarHeroi();
-                }catch(ParseException ex){
-                    System.out.println("Ocorreu um erro ao cadastrar no banco de dados :" + e);
-                }
+        btn_cadastrar.addActionListener((ActionEvent e) -> {
+            try{
+                cadastrarHeroi();
+            }catch(ParseException ex){
+                System.out.println("Ocorreu um erro ao cadastrar no banco de dados :" + e);
             }
         });
         

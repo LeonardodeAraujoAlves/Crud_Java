@@ -6,7 +6,9 @@ import Controller.Vilao;
 import View.Gui.User.Cad_User;
 import View.Gui.Vilao.CadVilao;
 import View.Gui.Heroi.CadHeroi;
+import View.Gui.Heroi.DeletaHeroi;
 import View.Gui.Login.TelaLogin;
+import View.Gui.Vilao.DeletaVilao;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -109,12 +111,20 @@ public class Menu extends JFrame {
             mostrarHeroi();
         });
         
+        btn_deletaHero.addActionListener((ActionEvent e) -> {
+            deletarHeroi();
+        });
+        
         btn_mostrarUsr.addActionListener((ActionEvent e) -> {
             mostrarUsuario();
         });
         
         btn_deletaUsr.addActionListener((ActionEvent e) -> {
             deletarUsuario();
+        });
+        
+        btn_deletaVilao.addActionListener((ActionEvent e) -> {
+            deletaVilao();
         });
         
         btn_sair.addActionListener((ActionEvent e) -> {
@@ -142,32 +152,43 @@ public class Menu extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-
+    //heroi
     private void cadHeroi() throws ParseException {
         this.dispose();
         CadHeroi cadHeroi = new CadHeroi();
     }
 
+    private void mostrarHeroi(){
+        Heroi miau = new Heroi();
+        miau.mostrar();
+    }
+    
+    private void deletarHeroi(){
+        this.dispose();
+        DeletaHeroi deletar = new DeletaHeroi();
+    }
+    
+    //vilao
     private void CadVilao() throws ParseException {
         this.dispose();
         CadVilao cadVilao = new CadVilao();
     }
     
-    private void CadUsr() throws ParseException {
-        this.dispose();
-        Cad_User cadastraUsuario = new Cad_User();
-    }
-    private void sair(){
-        this.dispose();
-        TelaLogin telaLogin = new TelaLogin();
-    }
+    
     private void mostrarVilao()throws ParseException{
       Vilao vilao = new Vilao();
       vilao.mostrar();
     }
-    private void mostrarHeroi(){
-        Heroi miau = new Heroi();
-        miau.mostrar();
+    
+    private void deletaVilao(){
+        this.dispose();
+        DeletaVilao deletar = new DeletaVilao();
+    }
+    
+    //usuario
+    private void CadUsr() throws ParseException {
+        this.dispose();
+        Cad_User cadastraUsuario = new Cad_User();
     }
     
     private void mostrarUsuario(){
@@ -179,5 +200,11 @@ public class Menu extends JFrame {
         String nome = "Shingeu";
         Usuario user = new Usuario();
         user.deletar(nome);
+    }
+    
+    //função da tela
+    private void sair(){
+        this.dispose();
+        TelaLogin telaLogin = new TelaLogin();
     }
 }

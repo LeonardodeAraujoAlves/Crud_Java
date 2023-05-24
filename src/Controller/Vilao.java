@@ -49,17 +49,31 @@ public class Vilao extends BDObject {
     }
 
     @Override
-    public void atualizar() {
+    public synchronized void atualizar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void deletar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public synchronized void deletar(String nome) {
+        try {
+            String query = "DELETE FROM VILAO WHERE nome_vilao = ?";
+            PreparedStatement pst = con.prepareStatement(query);
+
+            pst.setString(1, nome);
+
+            int resultado = pst.executeUpdate();
+
+            if (resultado > 0) {
+                JOptionPane.showMessageDialog(null, "Registro eliminado com sucesso.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Nenhum registro eliminado.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Ocorreu um erro ao tentar deletar o registro :" + e);
+        }
     }
 
     @Override
-   public void mostrar() {
+   public synchronized void mostrar() {
         try{
             String query = "SELECT * FROM VILAO";   
             

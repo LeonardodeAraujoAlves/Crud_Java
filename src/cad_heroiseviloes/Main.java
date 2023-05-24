@@ -26,8 +26,8 @@ public class Main {
        
        // ConnectionSingleton inst = ConnectionSingleton.getInstancy();
         //Connection con =  inst.getConexao();
-       // TelaLogin log = new TelaLogin();
-        DeletaHeroi del = new DeletaHeroi();
+        TelaLogin log = new TelaLogin();
+       // DeletaHeroi del = new DeletaHeroi();
     
         //Menu menu = new Menu();
         //} catch (ParseException ex) {
