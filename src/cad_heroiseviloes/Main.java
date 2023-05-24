@@ -3,6 +3,7 @@ package cad_heroiseviloes;
 
 
 import Controller.ConnectionSingleton;
+import View.Gui.Heroi.DeletaHeroi;
 import View.Gui.Menu.Menu;
 import View.Gui.Login.TelaLogin;
 import java.sql.Connection;
@@ -25,8 +26,8 @@ public class Main {
        
        // ConnectionSingleton inst = ConnectionSingleton.getInstancy();
         //Connection con =  inst.getConexao();
-        TelaLogin log = new TelaLogin();
-        
+       // TelaLogin log = new TelaLogin();
+        DeletaHeroi del = new DeletaHeroi();
     
         //Menu menu = new Menu();
         //} catch (ParseException ex) {
