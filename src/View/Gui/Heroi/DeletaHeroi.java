@@ -1,6 +1,9 @@
 package View.Gui.Heroi;
 
 import Controller.Heroi;
+import View.Gui.Menu.Menu;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -34,6 +37,15 @@ public class DeletaHeroi extends JFrame{
         btn_deletar.setBounds(90, 220, 200, 30);
         btn_voltar.setBounds(90, 280, 200, 30);
         
+        
+        btn_deletar.addActionListener((ActionEvent e) -> {
+            deletar();
+        });
+        
+        btn_voltar.addActionListener((ActionEvent e) -> {
+            voltar();
+        });
+        
         add(lbl_titulo);
         add(txt_nomeDoHeroi);
         add(btn_deletar);
@@ -45,8 +57,14 @@ public class DeletaHeroi extends JFrame{
     }
     
     private void deletar(){
-        Heroi heroi = new Heroi();
-        heroi.deletar();
+       String nome = txt_nomeDoHeroi.getText();
+       Heroi heroi = new Heroi();
+       heroi.deletar(nome);
+    }
+    
+    private void voltar(){
+        this.dispose();
+        Menu menu = new Menu();
     }
     
 }
