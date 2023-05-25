@@ -48,9 +48,32 @@ public class Vilao extends BDObject {
         }
     }
 
-    @Override
-    public synchronized void atualizar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public synchronized void atualizar( String organizacao_vilao, double altura_vilao, String inimigo_vilao, String lugar_principal, String arma, int quant_vitimas, String mascote_vilao,String nome_vilao) {
+        try {
+            String query = "UPDATE VILAO SET  organizacao_vilao= ?,altura_vilao = ?, inimigo_vilao = ?,lugar_principal = ?, arma = ?, quant_vitimas = ?, mascote_vilao = ? WHERE nome_vilao = ?";
+            PreparedStatement pst = con.prepareStatement(query);
+            
+            
+            pst.setString(1, organizacao_vilao);
+            pst.setDouble(2, altura_vilao);
+            pst.setString(3, inimigo_vilao);
+            pst.setString(4, lugar_principal);
+            pst.setString(5, arma);
+            pst.setInt(6, quant_vitimas);
+            pst.setString(7, mascote_vilao);
+            pst.setString(8, nome_vilao);
+
+            int resultado = pst.executeUpdate();
+
+            if (resultado > 0) {
+               JOptionPane.showMessageDialog(null,"### Registro alterado com sucesso. ###");
+            } else {
+                JOptionPane.showMessageDialog(null,"### Nenhum registro alterado. ###");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Ocorreu um erro ao atualizar banco de dados :" + ex);
+        }
     }
 
     @Override
@@ -85,10 +108,10 @@ public class Vilao extends BDObject {
 
     public void deletar(String nome) {
         try {//ta funcionando não 
-            String query = "DELETE FROM VILAO WHERE VILAO.NOME_VILAO = ?";
+            String query = "DELETE FROM VILAO WHERE nome_vilao = ?";
             PreparedStatement pst = con.prepareStatement(query);
 
-            pst.setString(1, "kel");
+            pst.setString(1, nome);
 
             int resultado = pst.executeUpdate();
 

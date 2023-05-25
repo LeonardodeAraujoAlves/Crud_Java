@@ -83,7 +83,9 @@ public class Menu extends JFrame {
                 System.out.println("Ocorreu um erro ao executar a ação :" + ex);
             }
         });
-
+        
+        
+        
         btn_cadVilao.addActionListener((ActionEvent e) -> {
             try {
                 CadVilao();
@@ -169,6 +171,7 @@ public class Menu extends JFrame {
         DeletaHeroi deletar = new DeletaHeroi();
     }
     
+    
     //vilao
     private void CadVilao() throws ParseException {
         this.dispose();
@@ -180,6 +183,7 @@ public class Menu extends JFrame {
       Vilao vilao = new Vilao();
       vilao.mostrar();
     }
+    
     
     private void deletaVilao(){
         this.dispose();

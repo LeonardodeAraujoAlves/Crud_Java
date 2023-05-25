@@ -24,7 +24,6 @@ public class ConnectionSingleton {
     private ConnectionSingleton() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("O driver se encontra ");
             conexao = DriverManager.getConnection(urlJDBC, usuario, senha);
             System.out.println("Conexão functionando");
         } catch (ClassNotFoundException ex) {

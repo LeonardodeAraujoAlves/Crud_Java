@@ -56,9 +56,29 @@ public class Heroi extends BDObject {
         }
     }
 
-    @Override
-    public void atualizar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void atualizar(String nome_heroi, int idade_heroi, double altura_heroi, String inimigo_heroi , String identidade_heroi) {
+        try {
+
+            String query = "UPDATE HEROI SET nome_heroi = ?, idade_heroi= ?, altura_heroi = ?, inimigo_heroi= ? WHERE identidade_heroi = ?" ;
+            PreparedStatement pst = con.prepareStatement(query);
+            
+            pst.setString(1, nome_heroi);
+            pst.setInt(2, idade_heroi);
+            pst.setDouble(3, altura_heroi);
+            pst.setString(4, inimigo_heroi);
+            pst.setString(5, identidade_heroi);
+            
+            int resultado = pst.executeUpdate();
+
+            if (resultado > 0) {
+               JOptionPane.showMessageDialog(null,"### Registro alterado com sucesso. ###");
+            } else {
+                JOptionPane.showMessageDialog(null,"### Nenhum registro alterado. ###");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro:\n" + e);
+        }
     }
 
     @Override
