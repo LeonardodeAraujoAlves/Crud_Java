@@ -1,39 +1,19 @@
 package cad_heroiseviloes;
 
-
-
-import Controller.ConnectionSingleton;
-import View.Gui.Heroi.DeletaHeroi;
-import View.Gui.Menu.Menu;
 import View.Gui.Login.TelaLogin;
-import View.Gui.User.DeletaUsuario;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- *
+ *Esta classe é responsável por iniciar a aplicação
  * @author L.A.A
  */
+
 public class Main {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //try {
-        // CadHeroi cad = new CadHeroi();
-       
-       // ConnectionSingleton inst = ConnectionSingleton.getInstancy();
-        //Connection con =  inst.getConexao();
-       //TelaLogin log = new TelaLogin();
-       // DeletaHeroi del = new DeletaHeroi();
-        DeletaUsuario usr = new DeletaUsuario();
-        //Menu menu = new Menu();
-        //} catch (ParseException ex) {
-        //    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        //}
+        TelaLogin Login = new TelaLogin();
     }
     
 }

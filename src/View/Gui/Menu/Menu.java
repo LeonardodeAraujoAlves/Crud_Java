@@ -8,6 +8,7 @@ import View.Gui.Vilao.CadVilao;
 import View.Gui.Heroi.CadHeroi;
 import View.Gui.Heroi.DeletaHeroi;
 import View.Gui.Login.TelaLogin;
+import View.Gui.User.DeletaUsuario;
 import View.Gui.Vilao.DeletaVilao;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -197,9 +198,8 @@ public class Menu extends JFrame {
     }
     
     private void deletarUsuario(){
-        String nome = "Shingeu";
-        Usuario user = new Usuario();
-        user.deletar(nome);
+        this.dispose();
+        DeletaUsuario user = new DeletaUsuario();
     }
     
     //função da tela

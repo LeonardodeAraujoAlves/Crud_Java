@@ -13,19 +13,19 @@ import javax.swing.JOptionPane;
  */
 public class Vilao extends BDObject {
 
-    ConnectionSingleton inst = ConnectionSingleton.getInstancy();
+    ConnectionSingleton inst = ConnectionSingleton.getInstance();
     Connection con = inst.getConexao();
 
     public Vilao(String nome, String organizacao, double altura, String inimigo, String lugaPrincipal, String arma, int quant_vitimas, String mascote) {
 
     }
-    
-    public Vilao(){
-    
+
+    public Vilao() {
+
     };
     
 
-    public synchronized void  inserir(String nome_vilao, String organizacao_vilao, double altura_vilao, String inimigo_vilao, String lugar_principal, String arma, int quant_vitimas, String mascote_vilao) {
+    public synchronized void inserir(String nome_vilao, String organizacao_vilao, double altura_vilao, String inimigo_vilao, String lugar_principal, String arma, int quant_vitimas, String mascote_vilao) {
         try {
             String query = "INSERT INTO VILAO VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(query);
@@ -41,7 +41,7 @@ public class Vilao extends BDObject {
 
             pst.executeUpdate();
 
-            System.out.println("Inerção realizada com sucesso");
+            JOptionPane.showMessageDialog(null,"Inerção realizada com sucesso");
 
         } catch (SQLException ex) {
             System.out.println("Ocorreu um erro ao inserir no banco de dados :" + ex);
@@ -53,12 +53,42 @@ public class Vilao extends BDObject {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public synchronized void deletar(String nome) {
+    @Override
+    public synchronized void mostrar() {
         try {
-            String query = "DELETE FROM VILAO WHERE NOME_VILAO = ?";
+            String query = "SELECT * FROM VILAO";
+
             PreparedStatement pst = con.prepareStatement(query);
 
-            pst.setString(1, nome);
+            ResultSet rst = pst.executeQuery();
+
+            System.out.println("Resultado da pesquisa");
+
+            while (rst.next()) {
+
+                 JOptionPane.showMessageDialog(null, "\n"+"#####################################################"+"\n"+
+                 "Nome :" + rst.getString("nome_vilao")+"\n"+
+                 "Organização :" + rst.getString("organizacao_vilao") + "\n" +
+                 "altura :" + rst.getString("altura_vilao")+"\n"+
+                 "inimigo :" + rst.getString("inimigo_vilao")+"\n"+
+                 "Lugar principal :" + rst.getString("lugar_principal")+"\n"+
+                 "Arma :" + rst.getString("arma")+"\n"+
+                 "Quantidade de vitimas :" + rst.getString("quant_vitimas")+"\n"+
+                 "Mascote :" + rst.getString("mascote_vilao") +"\n"+
+                "#####################################################");
+              
+            }
+        } catch (SQLException ex) {
+            System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
+        }
+    }
+
+    public void deletar(String nome) {
+        try {//ta funcionando não 
+            String query = "DELETE FROM VILAO WHERE VILAO.NOME_VILAO = ?";
+            PreparedStatement pst = con.prepareStatement(query);
+
+            pst.setString(1, "kel");
 
             int resultado = pst.executeUpdate();
 
@@ -69,42 +99,6 @@ public class Vilao extends BDObject {
             }
         } catch (SQLException e) {
             System.out.println("Ocorreu um erro ao tentar deletar o registro :" + e);
-        }
-    }
-
-    @Override
-   public synchronized void mostrar() {
-        try{
-            String query = "SELECT * FROM VILAO";   
-            
-            PreparedStatement pst =  con.prepareStatement(query);
-            
-            ResultSet rst = pst.executeQuery();
-            
-            System.out.println("Resultado da pesquisa");
-            
-            while(rst.next()){
-                
-                System.out.println("Nome :" + rst.getString("nome_vilao"));
-                System.out.println("Organização :" + rst.getString("organizacao_vilao"));
-                System.out.println("altura :" + rst.getString("altura_vilao"));
-                System.out.println("inimigo :" + rst.getString("inimigo_vilao"));
-                System.out.println("Lugar principal :" + rst.getString("lugar_principal"));
-                System.out.println("Arma :" + rst.getString("arma"));
-                System.out.println("Quantidade de vitimas :" + rst.getString("quant_vitimas"));
-                System.out.println("Mascote :" + rst.getString("mascote_vilao"));
-                System.out.println("#####################################################");
-                /*
-                JOptionPane.showMessageDialog(null, "Nome :" + rst.getString("nome_heroi") +"\n"+
-                        "identidade :" + rst.getString("identidade_heroi")+"\n"+
-                        "idade :" + rst.getString("idade_heroi")+"\n"+
-                        "altura :" + rst.getString("altura_heroi")+"\n"+
-                        "inimigo :" + rst.getString("inimigo_heroi")
-                        );
-*/
-            }
-        }catch(SQLException ex){
-            System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
         }
     }
 

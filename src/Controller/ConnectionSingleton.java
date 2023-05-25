@@ -15,7 +15,9 @@ public class ConnectionSingleton {
 
     private static final String urlJDBC = "jdbc:mysql://localhost:3306/heroiseviloes";
     private static final String usuario = "root";
-    private static final String senha = "Squibiribidu";
+    private static final String senha = "(°-°)";
+    
+    
 
     private static ConnectionSingleton instance;
 
@@ -32,7 +34,7 @@ public class ConnectionSingleton {
         }
     }
 
-    public static synchronized ConnectionSingleton getInstancy() {
+    public static synchronized ConnectionSingleton getInstance() {
 
         if (instance == null) {
             instance = new ConnectionSingleton();

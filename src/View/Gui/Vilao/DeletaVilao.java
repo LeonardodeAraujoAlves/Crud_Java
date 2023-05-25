@@ -65,7 +65,7 @@ public class DeletaVilao extends JFrame {
        String nome = txt_nomeDoVilao.getText();
         System.out.println(nome);
         Vilao vilao = new Vilao();
-       vilao.deletar(nome);
+        vilao.deletar(nome);
     }
     
     private void voltar(){

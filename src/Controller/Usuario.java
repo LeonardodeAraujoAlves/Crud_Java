@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Usuario extends BDObject {
 
-    ConnectionSingleton inst = ConnectionSingleton.getInstancy();
+    ConnectionSingleton inst = ConnectionSingleton.getInstance();
     Connection con = inst.getConexao();
 
     private String nome;
@@ -60,35 +60,33 @@ public class Usuario extends BDObject {
                 System.out.println("Nome :" + rst.getString("nome"));
                 System.out.println("Senha :" + rst.getString("senha"));
                 System.out.println("#####################################################");
-                /*
-                JOptionPane.showMessageDialog(null, "Nome :" + rst.getString("nome_heroi") +"\n"+
-                        "identidade :" + rst.getString("identidade_heroi")+"\n"+
-                        "idade :" + rst.getString("idade_heroi")+"\n"+
-                        "altura :" + rst.getString("altura_heroi")+"\n"+
-                        "inimigo :" + rst.getString("inimigo_heroi")
+                
+                JOptionPane.showMessageDialog(null, 
+                        "Nome :" + rst.getString("nome")+"\n"+
+                        "Senha :" + rst.getString("senha")+"\n"
                         );
-                 */
+                 
             }
         } catch (SQLException ex) {
             System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
         }
     }
 
-    public void atualizar(String nome, String senha) {
+    public void atualizar(String nome, String senha,String nomeAtual) {
         try {
 
-            String query = "UPDATE USUARIO SET nome = ?, senha= ? WHERE nome = " + nome;
+            String query = "UPDATE USUARIO SET nome = ?, senha= ? WHERE nome = ?" ;
             PreparedStatement pst = con.prepareStatement(query);
-
+            
             pst.setString(1, nome);
             pst.setString(2, senha);
-
+            pst.setString(3, nomeAtual);
             int resultado = pst.executeUpdate();
 
             if (resultado > 0) {
-                System.out.println("### Registro alterado com sucesso. ###");
+               JOptionPane.showMessageDialog(null,"### Registro alterado com sucesso. ###");
             } else {
-                System.out.println("### Nenhum registro alterado. ###");
+                JOptionPane.showMessageDialog(null,"### Nenhum registro alterado. ###");
             }
 
         } catch (SQLException e) {
@@ -107,9 +105,9 @@ public class Usuario extends BDObject {
             int resultado = pst.executeUpdate();
 
             if (resultado > 0) {
-                System.out.println("### Registro eliminado com sucesso. ###");
+                JOptionPane.showMessageDialog(null,"### Registro eliminado com sucesso. ###");
             } else {
-                System.out.println("### Nenhum registro eliminado. ###");
+                JOptionPane.showMessageDialog(null,"### Nenhum registro eliminado. ###");
             }
         } catch (SQLException e) {
             System.out.println("Ocorreu um erro ao tentar deletar o registro :" + e);

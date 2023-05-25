@@ -11,10 +11,11 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author L.A.A
+ * @version 1.4
  */
 public class Heroi extends BDObject {
 
-    ConnectionSingleton inst = ConnectionSingleton.getInstancy();
+    ConnectionSingleton inst = ConnectionSingleton.getInstance();
     Connection con = inst.getConexao();
 
     private String nome;

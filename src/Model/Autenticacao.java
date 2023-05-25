@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Autenticacao {
 
-    ConnectionSingleton inst = ConnectionSingleton.getInstancy();
+    ConnectionSingleton inst = ConnectionSingleton.getInstance();
     Connection con = inst.getConexao();
 
     public Autenticacao(String nome, String senha) {
