@@ -67,11 +67,8 @@ public class AtualizaHeroi extends TelaPadrao {
             Atualizar();
         });
         
-        btn_voltar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                voltar();
-            }
+        btn_voltar.addActionListener((ActionEvent e) -> {
+            voltar();
         });
                
         add(lbl_nomeHeroi);

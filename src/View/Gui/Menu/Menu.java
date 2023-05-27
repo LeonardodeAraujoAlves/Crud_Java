@@ -8,6 +8,7 @@ import View.Gui.Vilao.CadVilao;
 import View.Gui.Heroi.CadHeroi;
 import View.Gui.Heroi.DeletaHeroi;
 import View.Gui.Login.TelaLogin;
+import View.Gui.User.AtualizarUsuario;
 import View.Gui.User.DeletaUsuario;
 import View.Gui.Vilao.AtualizaVilao;
 import View.Gui.Vilao.DeletaVilao;
@@ -127,6 +128,10 @@ public class Menu extends JFrame {
             mostrarUsuario();
         });
         
+        btn_alteraUsr.addActionListener((ActionEvent e) -> {
+            AtualizaUsuario();
+        });
+        
         btn_deletaUsr.addActionListener((ActionEvent e) -> {
             deletarUsuario();
         });
@@ -217,6 +222,11 @@ public class Menu extends JFrame {
     private void deletarUsuario(){
         this.dispose();
         DeletaUsuario user = new DeletaUsuario();
+    }
+    
+    private void AtualizaUsuario(){
+        this.dispose();
+        AtualizarUsuario atualizarUsuario = new AtualizarUsuario();
     }
     
     //função da tela

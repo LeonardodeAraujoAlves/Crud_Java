@@ -84,11 +84,12 @@ public class AtualizarUsuario extends JFrame {
     }
 
     private synchronized void AtualizarUsuarios() {
-        String nomeId = txt_nomeAtual.getText();
+       
         String nomeuser = txt_nomeUsuario.getText();
+         String nomeId = nomeuser;
         String senhauser = txt_senhaUsuario.getText();
         try {
-            Usuario user = new Usuario();
+            Usuario user = new Usuario(nomeuser, senhauser);
             user.atualizar();
         } catch (Exception e) {
         }

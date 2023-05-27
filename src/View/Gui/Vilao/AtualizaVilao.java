@@ -5,11 +5,11 @@ import View.Gui.Menu.Menu;
 import View.Gui.TelaPadrao;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.ParseException;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
@@ -27,8 +27,11 @@ public class AtualizaVilao extends TelaPadrao {
     public AtualizaVilao() throws ParseException {
 
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("iconeVilão.png")));
-        setTitle("Cadastro de Vilões");
+        setTitle("Atualização de Vilões");
         setResizable(false);
+        setLayout(null);
+
+        JOptionPane.showMessageDialog(null, "Digite o nome do vilão para atualizar os campos!!!!!");
 
         lbl_nomeVilao = new JLabel("Nome do vilão :");
         lbl_organizacaoVilao = new JLabel("Organização do vilão :");
@@ -72,12 +75,12 @@ public class AtualizaVilao extends TelaPadrao {
         btn_atualizar.setBounds(20, 380, 200, 40);
         btn_voltar.setBounds(40, 450, 200, 60);
 
-        btn_voltar.addActionListener((ActionEvent e) -> {
-                Atualizar();
+        btn_atualizar.addActionListener((ActionEvent e) -> {
+            Atualizar();
         });
 
         btn_voltar.addActionListener((ActionEvent e) -> {
-             Voltar();
+            Voltar();
         });
         //label
         add(lbl_nomeVilao);
@@ -107,21 +110,24 @@ public class AtualizaVilao extends TelaPadrao {
 
     private void Voltar() {
         this.dispose();
-        new Menu();
+        Menu menu = new Menu();
     }
 
     private void Atualizar() {
-        String nome          = txt_nomeVilao.getText();
-        String organizacao   = txt_organizacaoVilao.getText();
-        String inimigo       = txt_inimigoVilao.getText();
+        String nome = txt_nomeVilao.getText();
+        String organizacao = txt_organizacaoVilao.getText();
+        String inimigo = txt_inimigoVilao.getText();
         String lugaPrincipal = txt_localprincipal.getText();
-        String mascote       = txt_mascoteVilao.getText();
-        String arma          = txt_arma.getText();
+        String mascote = txt_mascoteVilao.getText();
+        String arma = txt_arma.getText();
 
         int quant_vitimas = Integer.parseInt(txt_quantVitimas.getText());
         double altura = Double.parseDouble(txt_alturaVilao.getText());
+        try {
+            Vilao vilao = new Vilao(nome, organizacao, altura, inimigo, lugaPrincipal, arma, quant_vitimas, mascote);
+            vilao.atualizar();
 
-        Vilao vilao = new Vilao(nome, organizacao, altura, inimigo, lugaPrincipal, arma, quant_vitimas, mascote);
-        vilao.atualizar();
+        } catch (Exception e) {
+        }
     }
 }

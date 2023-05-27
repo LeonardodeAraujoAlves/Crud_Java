@@ -81,6 +81,7 @@ public class Vilao extends BDObject {
             String query = "UPDATE VILAO SET  organizacao_vilao= ?,altura_vilao = ?, inimigo_vilao = ?,lugar_principal = ?, arma = ?, quant_vitimas = ?, mascote_vilao = ? WHERE nome_vilao = ?";
             PreparedStatement pst = con.prepareStatement(query);
 
+            
             pst.setString(1, organizacao_vilao);
             pst.setDouble(2, altura_vilao);
             pst.setString(3, inimigo_vilao);
@@ -89,7 +90,7 @@ public class Vilao extends BDObject {
             pst.setInt(6, quant_vitimas);
             pst.setString(7, mascote_vilao);
             pst.setString(8, nome_vilao);
-
+            
             int resultado = pst.executeUpdate();
 
             if (resultado > 0) {

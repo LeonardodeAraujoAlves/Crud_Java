@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/Controller/Usuario.java</file>
-            <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/View/Gui/Vilao/CadVilao.java</file>
-            <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/View/Gui/User/Cad_User.java</file>
-            <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/View/Gui/Heroi/CadHeroi.java</file>
+            <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/View/Gui/Heroi/AtualizaHeroi.java</file>
+            <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/View/Gui/Vilao/AtualizaVilao.java</file>
             <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/Controller/Vilao.java</file>
-            <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/Controller/Template/BDObject.java</file>
             <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/View/Gui/User/AtualizarUsuario.java</file>
-            <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/Controller/Heroi.java</file>
             <file>file:/C:/Users/L.A.A/Documents/NetBeansProjects/Cad_HeroisEViloes/src/cad_heroiseviloes/Main.java</file>
         </group>
     </open-files>
