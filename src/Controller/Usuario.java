@@ -18,16 +18,17 @@ public class Usuario extends BDObject {
 
     private String nome;
     private String senha;
-
-    public Usuario(String nome, String senha) {
-        nome = this.nome;
-        senha = this.senha;
+    private String NomeAtual;
+    public Usuario(String nomeUsr, String senhaUsr) {
+        nome = nomeUsr;
+        senha = senhaUsr;
+        NomeAtual = nomeUsr;
     }
 
     public Usuario() {
     }
 
-    public void inserir(String nome, String senha) {
+    public void inserir() {
         try {
             String query = "INSERT INTO USUARIO VALUES (?,?)";
             PreparedStatement pst = con.prepareStatement(query);
@@ -72,7 +73,7 @@ public class Usuario extends BDObject {
         }
     }
 
-    public void atualizar(String nome, String senha,String nomeAtual) {
+    public void atualizar() {
         try {
 
             String query = "UPDATE USUARIO SET nome = ?, senha= ? WHERE nome = ?" ;
@@ -80,7 +81,7 @@ public class Usuario extends BDObject {
             
             pst.setString(1, nome);
             pst.setString(2, senha);
-            pst.setString(3, nomeAtual);
+            pst.setString(3, NomeAtual);
             int resultado = pst.executeUpdate();
 
             if (resultado > 0) {

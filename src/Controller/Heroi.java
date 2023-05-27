@@ -24,49 +24,51 @@ public class Heroi extends BDObject {
     private double altura;
     private String inimigo;
 
-    public Heroi(String nome, String identidade, int idade, double altura, String inimigo) {
-        nome = this.nome;
-        identidade = this.identidade;
-        idade = this.idade;
-        altura = this.altura;
-        inimigo = this.inimigo;
+    public Heroi(String nomeH, String identidadeH, int idadeH, double alturaH, String inimigoH) {
+        nome = nomeH;
+        identidade = identidadeH;
+        idade = idadeH;
+        altura = alturaH;
+        inimigo = inimigoH;
     }
 
     public Heroi() {
     }
 
-    public void inserir(String nome_heroi, String identidade_heroi, int idade_heroi, double altura_heroi, String inimigo_heroi) {
+    public void inserir() {
 
         try {
             String query = "INSERT INTO HEROI VALUES (?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(query);
 
-            pst.setString(1, nome_heroi);
-            pst.setString(2, identidade_heroi);
-            pst.setInt(3, idade_heroi);
-            pst.setDouble(4, altura_heroi);
-            pst.setString(5, inimigo_heroi);
+            pst.setString(1, nome);
+            pst.setString(2, identidade);
+            pst.setInt(3, idade);
+            pst.setDouble(4, altura);
+            pst.setString(5, inimigo);
 
             pst.executeUpdate();
 
             System.out.println("Inerção realizada com sucesso");
+            System.out.println("-"  + nome + "-");
 
         } catch (SQLException ex) {
             System.out.println("Ocorreu um erro ao inserir no banco de dados :" + ex);
         }
     }
 
-    public void atualizar(String nome_heroi, int idade_heroi, double altura_heroi, String inimigo_heroi , String identidade_heroi) {
+    @Override
+    public void atualizar() {
         try {
 
             String query = "UPDATE HEROI SET nome_heroi = ?, idade_heroi= ?, altura_heroi = ?, inimigo_heroi= ? WHERE identidade_heroi = ?" ;
             PreparedStatement pst = con.prepareStatement(query);
             
-            pst.setString(1, nome_heroi);
-            pst.setInt(2, idade_heroi);
-            pst.setDouble(3, altura_heroi);
-            pst.setString(4, inimigo_heroi);
-            pst.setString(5, identidade_heroi);
+            pst.setString(1, nome);
+            pst.setInt(2, idade);
+            pst.setDouble(3, altura);
+            pst.setString(4, inimigo);
+            pst.setString(5, identidade);
             
             int resultado = pst.executeUpdate();
 
@@ -82,7 +84,7 @@ public class Heroi extends BDObject {
     }
 
     @Override
-    public void deletar(String nome) {
+    public void deletar() {
         try {
             String query = "DELETE FROM HEROI WHERE NOME_HEROI = ?";
             PreparedStatement pst = con.prepareStatement(query);

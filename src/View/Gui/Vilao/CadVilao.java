@@ -1,6 +1,5 @@
 package View.Gui.Vilao;
 
-import Controller.ConnectionSingleton;
 import Controller.Vilao;
 import View.Gui.Menu.Menu;
 import View.Gui.TelaPadrao;
@@ -41,12 +40,12 @@ public class CadVilao extends TelaPadrao {
         lbl_mascoteVilao = new JLabel("Mascote do vilão :");
         lbl_quantVitimas = new JLabel("Quantidade de vitimas :");
 
-        txt_nomeVilao = new JTextField(" ");
-        txt_organizacaoVilao = new JTextField(" ");
-        txt_inimigoVilao = new JTextField(" ");
-        txt_localprincipal = new JTextField(" ");
-        txt_arma = new JTextField(" ");
-        txt_mascoteVilao = new JTextField(" ");
+        txt_nomeVilao = new JTextField();
+        txt_organizacaoVilao = new JTextField();
+        txt_inimigoVilao = new JTextField();
+        txt_localprincipal = new JTextField();
+        txt_arma = new JTextField();
+        txt_mascoteVilao = new JTextField();
         txt_quantVitimas = new JTextField();
         txt_alturaVilao = new JFormattedTextField(new MaskFormatter("#.##"));
 
@@ -139,7 +138,7 @@ public class CadVilao extends TelaPadrao {
 
         try {
             Vilao vila = new Vilao(nome, organizacao, altura, inimigo, lugaPrincipal, arma, quant_vitimas, mascote);
-            vila.inserir(nome, organizacao, altura, inimigo, lugaPrincipal, arma, quant_vitimas, mascote);
+            vila.inserir();
         } catch (Exception e) {
             System.out.println("Ocorreu um erro ao executar o evento :" + e);
         }

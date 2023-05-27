@@ -59,7 +59,7 @@ public class DeletaHeroi extends JFrame{
     private void deletar(){
        String nome = txt_nomeDoHeroi.getText();
        Heroi heroi = new Heroi();
-       heroi.deletar(nome);
+       heroi.deletar();
     }
     
     private void voltar(){

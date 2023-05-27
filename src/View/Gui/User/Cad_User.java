@@ -84,7 +84,7 @@ public class Cad_User extends TelaPadrao {
     
         try {
             Usuario user = new Usuario(nomeuser, senhauser);
-            user.inserir(nomeuser, senhauser);
+            user.inserir();
         } catch (Exception e) {
         }
     }

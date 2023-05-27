@@ -89,7 +89,7 @@ public class AtualizarUsuario extends JFrame {
         String senhauser = txt_senhaUsuario.getText();
         try {
             Usuario user = new Usuario();
-            user.atualizar(nomeuser, senhauser, nomeId);
+            user.atualizar();
         } catch (Exception e) {
         }
     }

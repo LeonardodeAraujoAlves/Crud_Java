@@ -23,7 +23,7 @@ public class Autenticacao {
     public boolean Acessa(String nome, String senha) {
 
         try {
-            String query = "SELECT * FROM USUARIO WHERE nome =? AND senha=?";
+            String query = "SELECT * FROM USUARIO WHERE nome_usuario =? AND senha_usuario=?";
             PreparedStatement pst = con.prepareStatement(query);
 
             pst.setString(1, nome);
