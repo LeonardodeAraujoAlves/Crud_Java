@@ -9,6 +9,7 @@ import View.Gui.Heroi.CadHeroi;
 import View.Gui.Heroi.DeletaHeroi;
 import View.Gui.Login.TelaLogin;
 import View.Gui.User.DeletaUsuario;
+import View.Gui.Vilao.AtualizaVilao;
 import View.Gui.Vilao.DeletaVilao;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -92,6 +93,10 @@ public class Menu extends JFrame {
             } catch (ParseException ex) {
                 System.out.println("Ocorreu um erro ao executar a ação :" + ex);
             }
+        });
+        
+        btn_alteraVilao.addActionListener((ActionEvent e) -> {
+            atualizaVilao();
         });
         
         btn_cadUsr.addActionListener((ActionEvent e) -> {
@@ -184,6 +189,14 @@ public class Menu extends JFrame {
       vilao.mostrar();
     }
     
+    private void atualizaVilao(){
+        this.dispose();
+        try {
+            AtualizaVilao vilao = new AtualizaVilao();
+        } catch (ParseException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     private void deletaVilao(){
         this.dispose();

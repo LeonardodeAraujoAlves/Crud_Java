@@ -3,6 +3,7 @@ package cad_heroiseviloes;
 import View.Gui.Heroi.AtualizaHeroi;
 import View.Gui.Login.TelaLogin;
 import View.Gui.User.AtualizarUsuario;
+import View.Gui.Vilao.AtualizaVilao;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,12 +19,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
-            // TelaLogin Login = new TelaLogin();
-            new AtualizaHeroi();
-        } catch (ParseException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
+             TelaLogin Login = new TelaLogin();
+            
+       
     }
     
 }
