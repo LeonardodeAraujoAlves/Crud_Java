@@ -5,7 +5,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -106,6 +110,16 @@ public class Vilao extends BDObject {
 
     @Override
     public synchronized void mostrar() {
+        
+        JFrame tela = new JFrame();
+        tela.setTitle("Vilões cadastrados");
+        tela.setSize(800, 300);
+        tela.setResizable(false);
+        // Cria a tabela
+        String[] colunas = {"Nome", "Organização","Altura","Inimigo","Lugar Principal","Arma","Quant_Vitimas","Mascote"};
+        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
+        JTable tabela = new JTable(modelo);
+        
         try {
             String query = "SELECT * FROM VILAO";
 
@@ -116,22 +130,24 @@ public class Vilao extends BDObject {
             System.out.println("Resultado da pesquisa");
 
             while (rst.next()) {
-
-                JOptionPane.showMessageDialog(null, "\n" + "#####################################################" + "\n"
-                        + "Nome :" + rst.getString("nome_vilao") + "\n"
-                        + "Organização :" + rst.getString("organizacao_vilao") + "\n"
-                        + "altura :" + rst.getString("altura_vilao") + "\n"
-                        + "inimigo :" + rst.getString("inimigo_vilao") + "\n"
-                        + "Lugar principal :" + rst.getString("lugar_principal") + "\n"
-                        + "Arma :" + rst.getString("arma") + "\n"
-                        + "Quantidade de vitimas :" + rst.getString("quant_vitimas") + "\n"
-                        + "Mascote :" + rst.getString("mascote_vilao") + "\n"
-                        + "#####################################################");
-
+                
+                        String nome = rst.getString("nome_vilao");
+                        String organização = rst.getString("organizacao_vilao");
+                        String altura = rst.getString("altura_vilao");
+                        String inimigo = rst.getString("inimigo_vilao");
+                        String principal = rst.getString("lugar_principal");
+                        String arma = rst.getString("arma") ;
+                        String vitimas = rst.getString("quant_vitimas");
+                        String mascote = rst.getString("mascote_vilao");
+                        modelo.addRow(new Object[] { nome,organização,altura,inimigo,principal,arma,vitimas,mascote});
             }
         } catch (SQLException ex) {
             System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
         }
+        tela.add(new JScrollPane(tabela));
+        tela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        // Exibe a janela
+        tela.setVisible(true);
     }
 
     public void deletar(String nome) {

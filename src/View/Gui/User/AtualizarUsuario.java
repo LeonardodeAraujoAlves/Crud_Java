@@ -31,6 +31,7 @@ public class AtualizarUsuario extends JFrame {
         setTitle("Atualização de usuario");
         setSize(300, 400);
         setResizable(false);
+        setLocationRelativeTo(null);
 
         lbl_nomeUsuario = new JLabel("Novo nome:");
         lbl_senhaUsuario = new JLabel("nova senha:");

@@ -10,6 +10,12 @@ package Controller.Template;
  * @author L.A.A
  */
 public abstract class BDObject {
+
+    public BDObject() {
+    }
+    
+    
+    
     public  void inserir(){};
     public  void atualizar(){};
     public  void deletar(){};

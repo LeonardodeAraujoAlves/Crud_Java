@@ -27,6 +27,7 @@ public class DeletaUsuario extends JFrame {
     
     public DeletaUsuario() {
         setLayout(null);
+        setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Tela de deleção de Vilões");
         setSize(400,400);

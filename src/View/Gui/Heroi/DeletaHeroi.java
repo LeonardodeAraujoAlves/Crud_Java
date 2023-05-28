@@ -3,7 +3,6 @@ package View.Gui.Heroi;
 import Controller.Heroi;
 import View.Gui.Menu.Menu;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +20,7 @@ public class DeletaHeroi extends JFrame{
     
     public DeletaHeroi() {
         setLayout(null);
+        setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Tela de deleção de Herois");
         setSize(400,400);

@@ -5,7 +5,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +23,7 @@ public class Usuario extends BDObject {
     private String nome;
     private String senha;
     private String NomeAtual;
+
     public Usuario(String nomeUsr, String senhaUsr) {
         nome = nomeUsr;
         senha = senhaUsr;
@@ -28,6 +33,7 @@ public class Usuario extends BDObject {
     public Usuario() {
     }
 
+    @Override
     public void inserir() {
         try {
             String query = "INSERT INTO USUARIO VALUES (?,?)";
@@ -47,6 +53,16 @@ public class Usuario extends BDObject {
 
     @Override
     public void mostrar() {
+        JFrame tela = new JFrame();
+
+        tela.setTitle("Usuarios cadastrados");
+        tela.setSize(500, 300);
+        tela.setResizable(false);
+        // Cria a tabela
+        String[] colunas = {"Nome", "Senha"};
+        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
+        JTable tabela = new JTable(modelo);
+
         try {
             String query = "SELECT * FROM USUARIO";
 
@@ -57,37 +73,35 @@ public class Usuario extends BDObject {
             System.out.println("Resultado da pesquisa");
 
             while (rst.next()) {
-
-                System.out.println("Nome :" + rst.getString("nome"));
-                System.out.println("Senha :" + rst.getString("senha"));
-                System.out.println("#####################################################");
-                
-                JOptionPane.showMessageDialog(null, 
-                        "Nome :" + rst.getString("nome")+"\n"+
-                        "Senha :" + rst.getString("senha")+"\n"
-                        );
-                 
+                String nome = rst.getString("nome_usuario");
+                String senha = rst.getString("senha_usuario");
+                modelo.addRow(new Object[]{nome, senha});
             }
         } catch (SQLException ex) {
             System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
         }
+        tela.add(new JScrollPane(tabela));
+        tela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        // Exibe a janela
+        tela.setVisible(true);
     }
 
+    @Override
     public void atualizar() {
         try {
 
-            String query = "UPDATE USUARIO SET nome = ?, senha= ? WHERE nome = ?" ;
+            String query = "UPDATE USUARIO SET nome_usuario = ?, senha_usuario = ? WHERE nome_usuario = ?";
             PreparedStatement pst = con.prepareStatement(query);
-            
+
             pst.setString(1, nome);
             pst.setString(2, senha);
             pst.setString(3, NomeAtual);
             int resultado = pst.executeUpdate();
 
             if (resultado > 0) {
-               JOptionPane.showMessageDialog(null,"### Registro alterado com sucesso. ###");
+                JOptionPane.showMessageDialog(null, "### Registro alterado com sucesso. ###");
             } else {
-                JOptionPane.showMessageDialog(null,"### Nenhum registro alterado. ###");
+                JOptionPane.showMessageDialog(null, "### Nenhum registro alterado. ###");
             }
 
         } catch (SQLException e) {
@@ -98,7 +112,7 @@ public class Usuario extends BDObject {
 
     public void deletar(String Nome) {
         try {
-            String query = "DELETE FROM USUARIO WHERE NOME = ?";
+            String query = "DELETE FROM USUARIO WHERE nome_usuario = ?";
             PreparedStatement pst = con.prepareStatement(query);
 
             pst.setString(1, Nome);
@@ -106,9 +120,9 @@ public class Usuario extends BDObject {
             int resultado = pst.executeUpdate();
 
             if (resultado > 0) {
-                JOptionPane.showMessageDialog(null,"### Registro eliminado com sucesso. ###");
+                JOptionPane.showMessageDialog(null, "### Registro eliminado com sucesso. ###");
             } else {
-                JOptionPane.showMessageDialog(null,"### Nenhum registro eliminado. ###");
+                JOptionPane.showMessageDialog(null, "### Nenhum registro eliminado. ###");
             }
         } catch (SQLException e) {
             System.out.println("Ocorreu um erro ao tentar deletar o registro :" + e);

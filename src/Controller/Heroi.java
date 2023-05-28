@@ -6,7 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -105,6 +109,16 @@ public class Heroi extends BDObject {
 
     @Override
     public void mostrar() {
+        
+        JFrame tela = new JFrame();
+         
+        tela.setTitle("Herois cadastrados");
+        tela.setSize(500, 300);
+        tela.setResizable(false);
+        // Cria a tabela
+        String[] colunas = {"Nome", "Identidade","Idade","Altura","Inimigo"};
+        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
+        JTable tabela = new JTable(modelo);
         try {
             String query = "SELECT * FROM HEROI";
 
@@ -115,24 +129,20 @@ public class Heroi extends BDObject {
             System.out.println("Resultado da pesquisa");
 
             while (rst.next()) {
-                System.out.println("#####################################################");
-                System.out.println("Nome :" + rst.getString("nome_heroi"));
-                System.out.println("identidade :" + rst.getString("identidade_heroi"));
-                System.out.println("idade :" + rst.getString("idade_heroi"));
-                System.out.println("altura :" + rst.getString("inimigo_heroi"));
-                System.out.println("inimigo :" + rst.getString("nome_heroi"));
-                System.out.println("#####################################################");
-
-                JOptionPane.showMessageDialog(null, "Nome :" + rst.getString("nome_heroi") + "\n"
-                        + "identidade :" + rst.getString("identidade_heroi") + "\n"
-                        + "idade :" + rst.getString("idade_heroi") + "\n"
-                        + "altura :" + rst.getString("altura_heroi") + "\n"
-                        + "inimigo :" + rst.getString("inimigo_heroi")
-                );
+                String nome = rst.getString("nome_heroi");
+                String identidade = rst.getString("identidade_heroi");
+                String idade = rst.getString("idade_heroi");
+                String altura = rst.getString("altura_heroi");
+                String inimigo = rst.getString("inimigo_heroi");
+                modelo.addRow(new Object[] { nome,identidade,idade,altura,inimigo});
             }
         } catch (SQLException ex) {
             System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
         }
+        tela.add(new JScrollPane(tabela));
+        tela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        // Exibe a janela
+        tela.setVisible(true);
     }
 
 }
