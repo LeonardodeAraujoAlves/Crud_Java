@@ -87,8 +87,7 @@ public class Heroi extends BDObject {
         }
     }
 
-    @Override
-    public void deletar() {
+    public void deletar(String nome) {
         try {
             String query = "DELETE FROM HEROI WHERE NOME_HEROI = ?";
             PreparedStatement pst = con.prepareStatement(query);

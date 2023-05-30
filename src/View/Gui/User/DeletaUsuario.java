@@ -6,7 +6,6 @@
 package View.Gui.User;
 
 import Controller.Usuario;
-import Controller.Vilao;
 import View.Gui.Menu.Menu;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
@@ -74,7 +73,4 @@ public class DeletaUsuario extends JFrame {
         this.dispose();
         Menu menu = new Menu();
     }
-    
-    
-    
 }

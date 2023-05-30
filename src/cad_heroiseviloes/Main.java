@@ -1,5 +1,6 @@
 package cad_heroiseviloes;
 
+import Controller.InsertArquivo;
 import View.Gui.Login.TelaLogin;
 
 /**
@@ -14,6 +15,9 @@ public class Main {
      */
     public static void main(String[] args) {
              TelaLogin Login = new TelaLogin();
+             InsertArquivo arq = new InsertArquivo();
+             Thread baguioDoido = new Thread(arq);
+             baguioDoido.start();
     }
     
 }
