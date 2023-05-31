@@ -14,6 +14,10 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 /**
+ * Classe responsável por criar uma interface gráfica
+ * e capturar os dados dos campos de texto para inserir posteriormente 
+ * no 
+ * banco de dados
  *
  * @author L.A.A
  */
@@ -98,11 +102,30 @@ public class CadHeroi extends TelaPadrao{
         setVisible(true);
     }
     
+    /**
+     * Método responsável por destruir a tela atual e criar 
+     * um novo objeto da classe menu, assim redirencionando 
+     * para o menu da aplicação
+     * 
+     * @throws ParseException lança ParseException que deverá ser tratada na hora 
+     * de ativar o evento no botão da interface gráfica
+     */
     private void trocaDeTela() throws ParseException{
         this.dispose();
         Menu menu = new Menu();
     }
     
+    /**
+     * Método responsável por capturar os dados inseridos nos campos 
+     * da interface gráfica, realizar conversões nos campos idade e altura
+     * para os tipos de dados corretos e criar um objeto da classe Heroi
+     * passando os dados no construtor do objeto.Depois de criado o objeto
+     * é realizada a chamada do método inserir, que é responsável por inserir os dados
+     * supracitados no banco de dados
+     * 
+     * @throws ParseException Esse método lança ParseException, do qual
+     * deverá ser tratado no momento em que este método for associado a um botão
+     */
     private void cadastrarHeroi()throws ParseException{
         String nome       = txt_nomeHeroi.getText(),
                identidade = txt_identidateHeroi.getText(),

@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
+ * Classe responsável por criar a interface gráfica para realizar a remoção de herois
+ * 
  *
  * @author L.A.A
  */
@@ -55,13 +57,28 @@ public class DeletaHeroi extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     
     }
-    
+   
+    /**
+     * Método responsável por realizar a remoção do dado no banco de dados, atravéz 
+     * do valor que foi inserido pelo usuário e pego dentro do campo de texto,
+     * primeiro o valor é capturado e após isso é criado um objeto da classe heroi,
+     * que chama o método deletar passando como parâmetro o valor que foi capturado 
+     * no campo de texto
+     * 
+     * 
+     * */
     private void deletar(){
        String nome = txt_nomeDoHeroi.getText();
        Heroi heroi = new Heroi();
        heroi.deletar(nome);
     }
-    
+    /**
+     * 
+     * Método responsável por destruir a tela atual e criar 
+     * um novo objeto da classe menu, assim redirencionando 
+     * para o menu da aplicação
+     * 
+     * */
     private void voltar(){
         this.dispose();
         Menu menu = new Menu();
