@@ -15,6 +15,11 @@ import java.sql.SQLException;
 /**
  *
  * @author L.A.A
+ * 
+ * Essa classe é responsável por ler um arquivo .txt, extrair os dados e inserir em no banco de dados, alem desta
+ * funcionalidade essa classe possui um uma thread monitorando o arquivo e verificando a existência de novas linhas
+ * inseridas, para que assim seja executada a função supracitada
+ * 
  */
 public class InsertArquivo implements Runnable {
 
@@ -23,18 +28,19 @@ public class InsertArquivo implements Runnable {
     private static final String ARQUIVO = "C:\\Users\\L.A.A\\Documents\\NetBeansProjects\\Cad_HeroisEViloes\\src\\insere.txt";
 
     @Override
-    public void run() {
+    public void run() {/**Thead que faz o monitoramento*/
         Thread Monitor = new Thread(() -> {
             try {
                 System.out.println("iniciada");
                 BufferedReader leitor = new BufferedReader(new FileReader(ARQUIVO));
-                String linha = null;
+                String linha;
                 while (true) {
                     linha = leitor.readLine();
                     if (linha != null) {
                         inserirNoBanco(linha);
+                    }else{
+                        Thread.sleep(1000); // aguarda 20 segundo antes de verificar novamente o arquivo
                     }
-                    Thread.sleep(20000); // aguarda 20 segundo antes de verificar novamente o arquivo
                 }
             } catch (IOException | InterruptedException e) {
                 System.out.println("Ocorreu um erro ao executar a thread " + e);
@@ -42,6 +48,16 @@ public class InsertArquivo implements Runnable {
         });
         Monitor.start();
     }
+    
+    /**
+     * 
+     *  Método utilizado para extrair os dados das linha do arquivo de texto
+     *  e armazenar em um array de string para que posteriormente esses valores sejam
+     * inseridos no banco de dados atravéz de Statements, alem disso este método diferencia
+     * os tipos de dados atravéz do tamanho do array e direciona para a entidade correspondente no banco de dados 
+     * 
+     * @param valores Valor da linha que foi lida do arquivo de texto 
+     */
 
     private void inserirNoBanco(String valores) {
         try {
