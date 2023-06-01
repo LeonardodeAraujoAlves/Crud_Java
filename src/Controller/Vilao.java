@@ -169,4 +169,9 @@ public class Vilao extends BDObject {
         }
     }
 
+    @Override
+    public void deletarTodos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

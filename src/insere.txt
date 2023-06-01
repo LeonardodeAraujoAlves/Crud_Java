@@ -1,18 +1,17 @@
 ribiri,9999
-jaspion,hideki,25,1.95,SatanGoss
-chinelo,daigunsai,1.78,agua,ruas,prego,1985,rato
-root,1234
-shingeru,1234
-banada,12345
-chinelada,batata
-Patata,ribiri,25,1.95,SatanGoss
-SuperNIna,Nian,1,0.45,Banho
 kowalski,batata
 tux,pingu
 rato,mouse
 hardware,cadeira
 maluco,dopedaco
 bolota,gorda
-Gonorroider,daigunsai,1.98,agua,shopping,palhaco,800,sabao
+root,1234
+shingeru,1234
+banada,12345
+chinelada,batata
+Batata,ribiri,25,1.95,SatanGoss
+Sabão,sabo,1,0.45,bacteria
 Jiban,Naoto,32,1.86,Dr.Jean Marie
-Gonorroider,daigunsai,1.98,agua,shopping,palhaco,800,sabao
+jaspion,jaspion,25,1.95,SatanGoss
+chinelo,callcenter,1.78,agua,ruas,prego,1985,rato
+Picadinho,anonimo,1.98,agua,shopping,palhaco,800,sabao

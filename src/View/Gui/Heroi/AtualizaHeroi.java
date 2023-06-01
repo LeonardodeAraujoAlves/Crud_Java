@@ -3,9 +3,7 @@ package View.Gui.Heroi;
 import Controller.Heroi;
 import View.Gui.Menu.Menu;
 import View.Gui.TelaPadrao;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.ParseException;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -15,6 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 /**
+ * 
+ * Classe responsável por criar a interface gráfica para realizar a 
+ * atualização de cadastros de heróis 
  *
  * @author L.A.A
  */
@@ -91,10 +92,23 @@ public class AtualizaHeroi extends TelaPadrao {
         setVisible(true);
     }
     
+    /**
+     * Este Método é responsável por desfazer a interface gráfica atual
+     * e criar um novo objeto da classe menu. Desta forma redirecionando
+     * o fluxo do programa, fazendo com que volte para o menu;
+     */
     private void voltar() {
         this.dispose();
         Menu menu = new Menu();
     }
+    
+    /**
+     *Método responsável por capturar os dados inseridos nos 
+     * campos de texto e armazenar-los em variaveis correspondentes
+     * aos seus tipos de dados, após esta ação os valores são passados
+     * para o construtor da classe heroi, que realiza a chamada do método atualizar,
+     * desta forma inserindo os novos valores no banco de dados;
+     */
     private void Atualizar(){
         String nome       = txt_nomeHeroi.getText();
         String identidade = txt_identidateHeroi.getText();

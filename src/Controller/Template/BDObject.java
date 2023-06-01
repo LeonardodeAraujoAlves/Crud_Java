@@ -6,6 +6,9 @@
 package Controller.Template;
 
 /**
+ * Esta classe se trata de um template method
+ * que deverá ser implementado nas classes que
+ * realizam operações no banco de dados
  *
  * @author L.A.A
  */
@@ -16,10 +19,10 @@ public abstract class BDObject {
     
     
     
-    public  void inserir(){};
-    public  void atualizar(){};
-    public  void deletar(String nome){};
-    public  void deletarTodos(){};
-    public  void mostrar(){};
+   public abstract void inserir();
+   public abstract void atualizar();
+   public abstract void deletar(String nome);
+   public abstract void deletarTodos();
+   public abstract void mostrar();
     
 }

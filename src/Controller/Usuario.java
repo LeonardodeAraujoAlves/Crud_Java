@@ -128,4 +128,9 @@ public class Usuario extends BDObject {
             System.out.println("Ocorreu um erro ao tentar deletar o registro :" + e);
         }
     }
+
+    @Override
+    public void deletarTodos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

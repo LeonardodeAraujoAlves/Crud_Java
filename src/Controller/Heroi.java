@@ -144,4 +144,9 @@ public class Heroi extends BDObject {
         tela.setVisible(true);
     }
 
+    @Override
+    public void deletarTodos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
