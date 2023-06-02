@@ -35,75 +35,14 @@ public class Heroi extends BDObject {
         altura = alturaH;
         inimigo = inimigoH;
     }
-
+    
+    
+    public Heroi(String nomeH){
+        nome = nomeH;
+    }
+    
+    
     public Heroi() {
-    }
-
-    public void inserir() {
-
-        try {
-            String query = "INSERT INTO HEROI VALUES (?,?,?,?,?)";
-            PreparedStatement pst = con.prepareStatement(query);
-
-            pst.setString(1, nome);
-            pst.setString(2, identidade);
-            pst.setInt(3, idade);
-            pst.setDouble(4, altura);
-            pst.setString(5, inimigo);
-
-            pst.executeUpdate();
-
-            System.out.println("Inerção realizada com sucesso");
-            System.out.println("-"  + nome + "-");
-
-        } catch (SQLException ex) {
-            System.out.println("Ocorreu um erro ao inserir no banco de dados :" + ex);
-        }
-    }
-
-    @Override
-    public void atualizar() {
-        try {
-
-            String query = "UPDATE HEROI SET nome_heroi = ?, idade_heroi= ?, altura_heroi = ?, inimigo_heroi= ? WHERE identidade_heroi = ?" ;
-            PreparedStatement pst = con.prepareStatement(query);
-            
-            pst.setString(1, nome);
-            pst.setInt(2, idade);
-            pst.setDouble(3, altura);
-            pst.setString(4, inimigo);
-            pst.setString(5, identidade);
-            
-            int resultado = pst.executeUpdate();
-
-            if (resultado > 0) {
-               JOptionPane.showMessageDialog(null,"### Registro alterado com sucesso. ###");
-            } else {
-                JOptionPane.showMessageDialog(null,"### Nenhum registro alterado. ###");
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Erro:\n" + e);
-        }
-    }
-
-    public void deletar(String nome) {
-        try {
-            String query = "DELETE FROM HEROI WHERE NOME_HEROI = ?";
-            PreparedStatement pst = con.prepareStatement(query);
-
-            pst.setString(1, nome);
-
-            int resultado = pst.executeUpdate();
-
-            if (resultado > 0) {
-                JOptionPane.showMessageDialog(null, "Registro eliminado com sucesso.");
-            } else {
-                JOptionPane.showMessageDialog(null, "Nenhum registro eliminado.");
-            }
-        } catch (SQLException e) {
-            System.out.println("Ocorreu um erro ao tentar deletar o registro :" + e);
-        }
     }
 
     @Override
@@ -144,9 +83,55 @@ public class Heroi extends BDObject {
         tela.setVisible(true);
     }
 
+   
+
     @Override
-    public void deletarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   public PreparedStatement statementInserir() {
+        String query = "INSERT INTO HEROI VALUES (?,?,?,?,?)";
+        PreparedStatement pst = null;
+        try {
+            pst = con.prepareStatement(query);
+            pst.setString(1, nome);
+            pst.setString(2, identidade);
+            pst.setInt(3, idade);
+            pst.setDouble(4, altura);
+            pst.setString(5, inimigo);
+        } catch (SQLException ex) {
+            System.out.println("Ocorreu um erro ao executar a operação de inserção :" + ex);
+        }
+        return pst;
+    }
+
+    @Override
+    public PreparedStatement statementDeletar() {
+            String query = "DELETE FROM HEROI WHERE NOME_HEROI = ?";
+            PreparedStatement pst = null;
+        try {
+            pst = con.prepareStatement(query);
+            pst.setString(1, nome);
+        } catch (SQLException e) {
+            System.out.println("Ocorreu um erro ao tentar deletar o registro :" + e);
+        }
+        return pst;
+    }
+
+    @Override
+    public PreparedStatement statementAtualizar() {
+            String query = "UPDATE HEROI SET nome_heroi = ?, idade_heroi= ?, altura_heroi = ?, inimigo_heroi= ? WHERE identidade_heroi = ?" ;
+            PreparedStatement pst = null;
+        try {
+            pst = con.prepareStatement(query);
+            
+            pst.setString(1, nome);
+            pst.setInt(2, idade);
+            pst.setDouble(3, altura);
+            pst.setString(4, inimigo);
+            pst.setString(5, identidade);
+            
+        } catch (SQLException e) {
+            System.out.println("Ocorreu um erro ao atualizar a base de dados :" + e);
+        }
+        return pst;
     }
 
 }

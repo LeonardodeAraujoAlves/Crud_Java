@@ -30,8 +30,9 @@ public class Autenticacao {
      * 
      * @param nome nome que foi capturado no campo da interface gráfica
      * @param senha senha que foi capturado no campo da interface gráfica
-     * @return true caso os dados dos paramentro existirem na base de dados 
-     * @return  false caso os dados não existam na base de dados
+     * @return true caso os dados dos paramentro existirem na base de dados e caso contrário retorna false e não permite com que 
+     * seja realizado o login 0
+     * 
      */
 
     public boolean Acessa(String nome, String senha) {

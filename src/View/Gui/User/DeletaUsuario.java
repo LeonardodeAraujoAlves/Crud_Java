@@ -64,9 +64,8 @@ public class DeletaUsuario extends JFrame {
     
     private void deletar(){
        String nome = txt_nomeDoUsuario.getText();
-       System.out.println(nome);
-       Usuario usuario = new Usuario();
-       usuario.deletar(nome);
+       Usuario usuario = new Usuario(nome);
+       usuario.deletar();
     }
     
     private void voltar(){

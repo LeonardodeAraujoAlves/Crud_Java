@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -29,28 +28,14 @@ public class Usuario extends BDObject {
         senha = senhaUsr;
         NomeAtual = nomeUsr;
     }
-
+    
+    public Usuario(String nomeUsr){
+        nome = nomeUsr;
+    }
+    
     public Usuario() {
     }
-
-    @Override
-    public void inserir() {
-        try {
-            String query = "INSERT INTO USUARIO VALUES (?,?)";
-            PreparedStatement pst = con.prepareStatement(query);
-
-            pst.setString(1, nome);
-            pst.setString(2, senha);
-
-            pst.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Cadastro Realizado!");
-
-        } catch (SQLException ex) {
-            System.out.println("Ocorreu um erro ao inserir no banco de dados :" + ex);
-        }
-    }
-
+    
     @Override
     public void mostrar() {
         JFrame tela = new JFrame();
@@ -87,50 +72,49 @@ public class Usuario extends BDObject {
     }
 
     @Override
-    public void atualizar() {
+    public PreparedStatement statementInserir() {
+            String query = "INSERT INTO USUARIO VALUES (?,?)";
+            PreparedStatement pst = null;
         try {
+            pst = con.prepareStatement(query);
 
+            pst.setString(1, nome);
+            pst.setString(2, senha);
+
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("Ocorreu um erro ao inserir no banco de dados :" + ex);
+        }
+        return pst;
+    }
+
+    @Override
+    public PreparedStatement statementDeletar() {
+            String query = "DELETE FROM USUARIO WHERE nome_usuario = ?";
+            PreparedStatement pst = null;
+        try {
+            pst = con.prepareStatement(query);
+            pst.setString(1, nome);
+        } catch (SQLException e) {
+            System.out.println("Ocorreu um erro ao tentar deletar o registro :" + e);
+        }
+        return pst;
+    }
+
+    @Override
+    public PreparedStatement statementAtualizar() {
             String query = "UPDATE USUARIO SET nome_usuario = ?, senha_usuario = ? WHERE nome_usuario = ?";
-            PreparedStatement pst = con.prepareStatement(query);
+            PreparedStatement pst  = null;
+        try {
+            pst = con.prepareStatement(query);
 
             pst.setString(1, nome);
             pst.setString(2, senha);
             pst.setString(3, NomeAtual);
-            int resultado = pst.executeUpdate();
-
-            if (resultado > 0) {
-                JOptionPane.showMessageDialog(null, "### Registro alterado com sucesso. ###");
-            } else {
-                JOptionPane.showMessageDialog(null, "### Nenhum registro alterado. ###");
-            }
-
         } catch (SQLException e) {
             System.out.println("Erro:\n" + e);
         }
-
-    }
-
-    public void deletar(String Nome) {
-        try {
-            String query = "DELETE FROM USUARIO WHERE nome_usuario = ?";
-            PreparedStatement pst = con.prepareStatement(query);
-
-            pst.setString(1, Nome);
-
-            int resultado = pst.executeUpdate();
-
-            if (resultado > 0) {
-                JOptionPane.showMessageDialog(null, "### Registro eliminado com sucesso. ###");
-            } else {
-                JOptionPane.showMessageDialog(null, "### Nenhum registro eliminado. ###");
-            }
-        } catch (SQLException e) {
-            System.out.println("Ocorreu um erro ao tentar deletar o registro :" + e);
-        }
-    }
-
-    @Override
-    public void deletarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return pst;
     }
 }
