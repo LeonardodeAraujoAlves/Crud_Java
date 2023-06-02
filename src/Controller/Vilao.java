@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -48,52 +47,6 @@ public class Vilao extends BDObject {
 
     };
     
-    
-    @Override
-    public synchronized void mostrar() {
-        
-        JFrame tela = new JFrame();
-        tela.setTitle("Vilões cadastrados");
-        tela.setSize(800, 300);
-        tela.setResizable(false);
-        // Cria a tabela
-        String[] colunas = {"Nome", "Organização","Altura","Inimigo","Lugar Principal","Arma","Quant_Vitimas","Mascote"};
-        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
-        JTable tabela = new JTable(modelo);
-        
-        try {
-            String query = "SELECT * FROM VILAO";
-
-            PreparedStatement pst = con.prepareStatement(query);
-
-            ResultSet rst = pst.executeQuery();
-
-            System.out.println("Resultado da pesquisa");
-
-            while (rst.next()) {
-                
-                        String nome = rst.getString("nome_vilao");
-                        String organização = rst.getString("organizacao_vilao");
-                        String altura = rst.getString("altura_vilao");
-                        String inimigo = rst.getString("inimigo_vilao");
-                        String principal = rst.getString("lugar_principal");
-                        String arma = rst.getString("arma") ;
-                        String vitimas = rst.getString("quant_vitimas");
-                        String mascote = rst.getString("mascote_vilao");
-                        modelo.addRow(new Object[] { nome,organização,altura,inimigo,principal,arma,vitimas,mascote});
-            }
-        } catch (SQLException ex) {
-            System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
-        }
-        tela.add(new JScrollPane(tabela));
-        tela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        // Exibe a janela
-        tela.setVisible(true);
-    }
-
-
-    
-
     @Override
     public PreparedStatement statementInserir() {
          String query = "INSERT INTO vilao VALUES (?,?,?,?,?,?,?,?)";
@@ -149,6 +102,45 @@ public class Vilao extends BDObject {
         } catch (SQLException ex) {
             System.out.println("Ocorreu um erro ao atualizar banco de dados :" + ex);
         }
+        return pst;
+    }
+
+    @Override
+    public PreparedStatement statementMostrar() {
+        JFrame tela = new JFrame();
+        tela.setTitle("Vilões cadastrados");
+        tela.setSize(800, 300);
+        tela.setResizable(false);
+        // Cria a tabela
+        String[] colunas = {"Nome", "Organização","Altura","Inimigo","Lugar Principal","Arma","Quant_Vitimas","Mascote"};
+        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
+        JTable tabela = new JTable(modelo);
+        String query = "SELECT * FROM VILAO";
+        PreparedStatement pst = null;
+        ResultSet rst = null;
+        try {
+            pst = con.prepareStatement(query);
+            rst = pst.executeQuery();
+
+            while (rst.next()) {
+                
+                        String nome = rst.getString("nome_vilao");
+                        String organização = rst.getString("organizacao_vilao");
+                        String altura = rst.getString("altura_vilao");
+                        String inimigo = rst.getString("inimigo_vilao");
+                        String principal = rst.getString("lugar_principal");
+                        String arma = rst.getString("arma") ;
+                        String vitimas = rst.getString("quant_vitimas");
+                        String mascote = rst.getString("mascote_vilao");
+                        modelo.addRow(new Object[] { nome,organização,altura,inimigo,principal,arma,vitimas,mascote});
+            }
+        } catch (SQLException ex) {
+            System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
+        }
+        tela.add(new JScrollPane(tabela));
+        tela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        // Exibe a janela
+        tela.setVisible(true);
         return pst;
     }
 }

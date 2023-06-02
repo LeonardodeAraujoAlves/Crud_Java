@@ -37,41 +37,6 @@ public class Usuario extends BDObject {
     }
     
     @Override
-    public void mostrar() {
-        JFrame tela = new JFrame();
-
-        tela.setTitle("Usuarios cadastrados");
-        tela.setSize(500, 300);
-        tela.setResizable(false);
-        // Cria a tabela
-        String[] colunas = {"Nome", "Senha"};
-        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
-        JTable tabela = new JTable(modelo);
-
-        try {
-            String query = "SELECT * FROM USUARIO";
-
-            PreparedStatement pst = con.prepareStatement(query);
-
-            ResultSet rst = pst.executeQuery();
-
-            System.out.println("Resultado da pesquisa");
-
-            while (rst.next()) {
-                String nome = rst.getString("nome_usuario");
-                String senha = rst.getString("senha_usuario");
-                modelo.addRow(new Object[]{nome, senha});
-            }
-        } catch (SQLException ex) {
-            System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
-        }
-        tela.add(new JScrollPane(tabela));
-        tela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        // Exibe a janela
-        tela.setVisible(true);
-    }
-
-    @Override
     public PreparedStatement statementInserir() {
             String query = "INSERT INTO USUARIO VALUES (?,?)";
             PreparedStatement pst = null;
@@ -115,6 +80,40 @@ public class Usuario extends BDObject {
         } catch (SQLException e) {
             System.out.println("Erro:\n" + e);
         }
+        return pst;
+    }
+
+    @Override
+    public PreparedStatement statementMostrar() {
+        JFrame tela = new JFrame();
+
+        tela.setTitle("Usuarios cadastrados");
+        tela.setSize(500, 300);
+        tela.setResizable(false);
+        // Cria a tabela
+        String[] colunas = {"Nome", "Senha"};
+        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
+        JTable tabela = new JTable(modelo);
+        
+        String query = "SELECT * FROM USUARIO";
+        PreparedStatement pst = null;
+        ResultSet rst = null;
+        
+        try {
+            pst = con.prepareStatement(query);
+            rst = pst.executeQuery();
+            while (rst.next()) {
+                String nome = rst.getString("nome_usuario");
+                String senha = rst.getString("senha_usuario");
+                modelo.addRow(new Object[]{nome, senha});
+            }
+        } catch (SQLException ex) {
+            System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
+        }
+        tela.add(new JScrollPane(tabela));
+        tela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        // Exibe a janela
+        tela.setVisible(true);
         return pst;
     }
 }

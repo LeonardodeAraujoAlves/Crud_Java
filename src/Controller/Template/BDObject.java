@@ -6,7 +6,9 @@
 package Controller.Template;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -66,10 +68,20 @@ public abstract class BDObject {
         }
    };
    
-   public abstract void mostrar();
+   public void mostrar(){
+       JFrame tela = new JFrame();
+       try {
+            PreparedStatement pst = statementMostrar();
+            ResultSet rst = pst.executeQuery();
+       } catch (SQLException e) {
+           System.out.println("Ocorreu um erro ao realizar a consulta na base de dados :" + e);
+       }
+       
+   };
 
    public abstract PreparedStatement statementInserir();
    public abstract PreparedStatement statementDeletar();
    public abstract PreparedStatement statementAtualizar();
+   public abstract PreparedStatement statementMostrar();
 }
 

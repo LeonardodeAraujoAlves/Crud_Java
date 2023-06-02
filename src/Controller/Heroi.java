@@ -45,47 +45,7 @@ public class Heroi extends BDObject {
     public Heroi() {
     }
 
-    @Override
-    public void mostrar() {
-        
-        JFrame tela = new JFrame();
-         
-        tela.setTitle("Herois cadastrados");
-        tela.setSize(500, 300);
-        tela.setResizable(false);
-        // Cria a tabela
-        String[] colunas = {"Nome", "Identidade","Idade","Altura","Inimigo"};
-        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
-        JTable tabela = new JTable(modelo);
-        try {
-            String query = "SELECT * FROM HEROI";
-
-            PreparedStatement pst = con.prepareStatement(query);
-
-            ResultSet rst = pst.executeQuery();
-
-            System.out.println("Resultado da pesquisa");
-
-            while (rst.next()) {
-                String nome = rst.getString("nome_heroi");
-                String identidade = rst.getString("identidade_heroi");
-                String idade = rst.getString("idade_heroi");
-                String altura = rst.getString("altura_heroi");
-                String inimigo = rst.getString("inimigo_heroi");
-                modelo.addRow(new Object[] { nome,identidade,idade,altura,inimigo});
-            }
-        } catch (SQLException ex) {
-            System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
-        }
-        tela.add(new JScrollPane(tabela));
-        tela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        // Exibe a janela
-        tela.setVisible(true);
-    }
-
-   
-
-    @Override
+   @Override
    public PreparedStatement statementInserir() {
         String query = "INSERT INTO HEROI VALUES (?,?,?,?,?)";
         PreparedStatement pst = null;
@@ -134,4 +94,39 @@ public class Heroi extends BDObject {
         return pst;
     }
 
+    @Override
+    public PreparedStatement statementMostrar() {
+        JFrame tela = new JFrame();
+         
+        tela.setTitle("Herois cadastrados");
+        tela.setSize(500, 300);
+        tela.setResizable(false);
+        // Cria a tabela
+        String[] colunas = {"Nome", "Identidade","Idade","Altura","Inimigo"};
+        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
+        JTable tabela = new JTable(modelo);
+        
+        String query = "SELECT * FROM HEROI";
+        PreparedStatement pst = null;
+        ResultSet rst = null;
+        try {
+            pst = con.prepareStatement(query);
+            rst = pst.executeQuery();
+            while (rst.next()) {
+                String nome = rst.getString("nome_heroi");
+                String identidade = rst.getString("identidade_heroi");
+                String idade = rst.getString("idade_heroi");
+                String altura = rst.getString("altura_heroi");
+                String inimigo = rst.getString("inimigo_heroi");
+                modelo.addRow(new Object[] { nome,identidade,idade,altura,inimigo});
+            }
+        } catch (SQLException ex) {
+            System.out.println("Ocorreu um erro ao exibit os registros:" + ex);
+        }
+        tela.add(new JScrollPane(tabela));
+        tela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        // Exibe a janela
+        tela.setVisible(true);
+        return pst;
+    }
 }
