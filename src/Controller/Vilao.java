@@ -39,21 +39,20 @@ public class Vilao extends BDObject {
         mascote_vilao = mascote;
     }
 
-    public Vilao(String nome){
+    public Vilao(String nome) {
         nome_vilao = nome;
     }
-    
+
     public Vilao() {
 
     };
-    
+
     @Override
     public PreparedStatement statementInserir() {
-         String query = "INSERT INTO vilao VALUES (?,?,?,?,?,?,?,?)";
-         PreparedStatement pst = null;
+        String query = "INSERT INTO vilao VALUES (?,?,?,?,?,?,?,?)";
+        PreparedStatement pst = null;
         try {
             pst = con.prepareStatement(query);
-
             pst.setString(1, nome_vilao);
             pst.setString(2, organizacao_vilao);
             pst.setDouble(3, altura_vilao);
@@ -71,10 +70,9 @@ public class Vilao extends BDObject {
     @Override
     public PreparedStatement statementDeletar() {
         String query = "DELETE FROM VILAO WHERE nome_vilao = ?";
-        PreparedStatement pst = null;    
-        try {//ta funcionando não 
+        PreparedStatement pst = null;
+        try {
             pst = con.prepareStatement(query);
-
             pst.setString(1, nome_vilao);
         } catch (SQLException e) {
             System.out.println("Ocorreu um erro ao tentar deletar o registro :" + e);
@@ -84,12 +82,12 @@ public class Vilao extends BDObject {
 
     @Override
     public PreparedStatement statementAtualizar() {
-           
+
         String query = "UPDATE VILAO SET  organizacao_vilao= ?,altura_vilao = ?, inimigo_vilao = ?,lugar_principal = ?, arma = ?, quant_vitimas = ?, mascote_vilao = ? WHERE nome_vilao = ?";
-           PreparedStatement pst = null;
+        PreparedStatement pst = null;
         try {
             pst = con.prepareStatement(query);
-            
+
             pst.setString(1, organizacao_vilao);
             pst.setDouble(2, altura_vilao);
             pst.setString(3, inimigo_vilao);
@@ -98,7 +96,7 @@ public class Vilao extends BDObject {
             pst.setInt(6, quant_vitimas);
             pst.setString(7, mascote_vilao);
             pst.setString(8, nome_vilao);
-            
+
         } catch (SQLException ex) {
             System.out.println("Ocorreu um erro ao atualizar banco de dados :" + ex);
         }
@@ -112,7 +110,7 @@ public class Vilao extends BDObject {
         tela.setSize(800, 300);
         tela.setResizable(false);
         // Cria a tabela
-        String[] colunas = {"Nome", "Organização","Altura","Inimigo","Lugar Principal","Arma","Quant_Vitimas","Mascote"};
+        String[] colunas = {"Nome", "Organização", "Altura", "Inimigo", "Lugar Principal", "Arma", "Quant_Vitimas", "Mascote"};
         DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
         JTable tabela = new JTable(modelo);
         String query = "SELECT * FROM VILAO";
@@ -123,16 +121,16 @@ public class Vilao extends BDObject {
             rst = pst.executeQuery();
 
             while (rst.next()) {
-                
-                        String nome = rst.getString("nome_vilao");
-                        String organização = rst.getString("organizacao_vilao");
-                        String altura = rst.getString("altura_vilao");
-                        String inimigo = rst.getString("inimigo_vilao");
-                        String principal = rst.getString("lugar_principal");
-                        String arma = rst.getString("arma") ;
-                        String vitimas = rst.getString("quant_vitimas");
-                        String mascote = rst.getString("mascote_vilao");
-                        modelo.addRow(new Object[] { nome,organização,altura,inimigo,principal,arma,vitimas,mascote});
+
+                String nome = rst.getString("nome_vilao");
+                String organização = rst.getString("organizacao_vilao");
+                String altura = rst.getString("altura_vilao");
+                String inimigo = rst.getString("inimigo_vilao");
+                String principal = rst.getString("lugar_principal");
+                String arma = rst.getString("arma");
+                String vitimas = rst.getString("quant_vitimas");
+                String mascote = rst.getString("mascote_vilao");
+                modelo.addRow(new Object[]{nome, organização, altura, inimigo, principal, arma, vitimas, mascote});
             }
         } catch (SQLException ex) {
             System.out.println("Ocorreu um erro ao exibit os registros:" + ex);

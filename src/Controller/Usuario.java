@@ -42,13 +42,9 @@ public class Usuario extends BDObject {
             PreparedStatement pst = null;
         try {
             pst = con.prepareStatement(query);
-
             pst.setString(1, nome);
             pst.setString(2, senha);
-
-            pst.executeUpdate();
-
-        } catch (SQLException ex) {
+         } catch (SQLException ex) {
             System.out.println("Ocorreu um erro ao inserir no banco de dados :" + ex);
         }
         return pst;
@@ -73,7 +69,6 @@ public class Usuario extends BDObject {
             PreparedStatement pst  = null;
         try {
             pst = con.prepareStatement(query);
-
             pst.setString(1, nome);
             pst.setString(2, senha);
             pst.setString(3, NomeAtual);

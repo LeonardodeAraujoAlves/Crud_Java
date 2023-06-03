@@ -117,7 +117,6 @@ public class AtualizaHeroi extends TelaPadrao {
         int idade = Integer.parseInt(txt_idadeHeroi.getText());
         double altura = Double.parseDouble(txt_alturaHeroi.getText());
         
-        
         new Heroi(nome, identidade, idade, altura, inimigo).atualizar();
     }
 }

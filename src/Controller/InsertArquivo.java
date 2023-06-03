@@ -77,7 +77,6 @@ public class InsertArquivo implements Runnable {
             String[] valoresSeparados = valores.split(",");
 
             if (valoresSeparados.length == 2) {
-                // System.out.println("Tamanho do array" + valoresSeparados.length);
                 String queryUsuario = "INSERT INTO USUARIO VALUES (?, ?)";
                 PreparedStatement pst = con.prepareStatement(queryUsuario);
 
@@ -85,7 +84,6 @@ public class InsertArquivo implements Runnable {
                 pst.setString(2, valoresSeparados[1]);
 
                 pst.executeUpdate();
-                // System.out.println("Valores inseridos no banco: " + valores);
             } else if (valoresSeparados.length == 5) {
 
                 String query = "INSERT INTO HEROI VALUES (?,?,?,?,?)";
@@ -98,10 +96,6 @@ public class InsertArquivo implements Runnable {
                 pst.setString(5, valoresSeparados[4]);
 
                 pst.executeUpdate();
-
-                System.out.println("Inerção realizada com sucesso");
-                System.out.println("-" + valoresSeparados[0] + "-");
-
             } else if (valoresSeparados.length == 8) {
                 String query = "INSERT INTO vilao VALUES (?,?,?,?,?,?,?,?)";
                 PreparedStatement pst = con.prepareStatement(query);
@@ -116,9 +110,7 @@ public class InsertArquivo implements Runnable {
                 pst.setString(8, valoresSeparados[7]);
 
                 int resultado = pst.executeUpdate();
-
             }
-
         } catch (SQLException e) {
             System.out.println("Ocorreu um erro ao tentar inserir os dados :" + e);
         }
