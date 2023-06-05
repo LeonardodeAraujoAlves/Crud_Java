@@ -10,7 +10,7 @@ import java.sql.SQLException;
  * conexão e acesso ao banco de dados mysql
  *
  *
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  */
 
 public class ConnectionSingleton {

@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * que deverá ser implementado nas classes que
  * realizam operações de persistência no banco de dados
  *
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  */
 public abstract class BDObject {
 

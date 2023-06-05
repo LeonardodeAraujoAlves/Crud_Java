@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * a autênticação do usuário atravéz
  * da consulta no banco de dados
  *
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  */
 public class Autenticacao {
 

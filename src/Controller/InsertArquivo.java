@@ -15,13 +15,13 @@ import java.sql.SQLException;
 
 /**
  *
- * @author L.A.A
+ * 
  *
  * Essa classe é responsável por ler um arquivo .txt, extrair os dados e inserir
  * em no banco de dados, alem desta funcionalidade essa classe possui um uma
  * thread monitorando o arquivo e verificando a existência de novas linhas
  * inseridas, para que assim seja executada a função supracitada
- *
+ *@author Leonardo de Araujo Alves
  */
 public class InsertArquivo implements Runnable {
 

@@ -12,7 +12,7 @@ import javax.swing.JTextField;
  * Classe responsável por criar a interface gráfica para realizar a remoção de herois
  * 
  *
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  */
 public class DeletaHeroi extends JFrame{
 

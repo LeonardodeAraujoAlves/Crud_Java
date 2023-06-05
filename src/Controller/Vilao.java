@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  * Esta classe é responsável por representar um vilão dentro do sistema de cadastro
  * Ela estende a classe BDObject para permitir a persistência em banco de dados
  * Possui métodos para inserir, atualizar, deletar e mostrar informações de um herói no banco de dados
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  * @version 1.6
  */
 public class Vilao extends BDObject {

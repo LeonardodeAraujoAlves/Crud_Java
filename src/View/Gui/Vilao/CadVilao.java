@@ -14,8 +14,10 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 /**
- *
- * @author L.A.A
+ *Classe responsável por criar a interface gráfica para
+ * capturar os dados inseridos nos campos de texto da interface gráfica
+ * para realizar a inserção dos mesmos no banco de dados de vilões
+ * @author Leonardo de Araujo Alves
  */
 public class CadVilao extends TelaPadrao {
 
@@ -119,12 +121,29 @@ public class CadVilao extends TelaPadrao {
         setVisible(true);
     }
     //Agora temos que adicionar os eventos   
-
+    /**
+     * Método responsável por destruir a tela atual e criar 
+     * um novo objeto da classe menu, assim redirencionando 
+     * para o menu da aplicação
+     * 
+     * @throws ParseException lança ParseException que deverá ser tratada na hora 
+     * de ativar o evento no botão da interface gráfica
+     */
     private void trocarDeTela() throws ParseException {
         this.dispose();
         new Menu();
     }
 
+     /**
+     * Método responsável por capturar os dados inseridos nos campos 
+     * da interface gráfica,criar um objeto da classe Vilao
+     * passando os dados que foram capturados para oconstrutor do objeto, depois de criado o objeto
+     * é realizada a chamada do método inserir, que é responsável por inserir os dados
+     * do vilões no banco de dados 
+     * 
+     * @throws ParseException Esse método lança ParseException, do qual
+     * deverá ser tratado no momento em que este método for associado a um botão
+     */
     private void cadastrarVilao() throws ParseException {
         String nome = txt_nomeVilao.getText(),
                 organizacao = txt_organizacaoVilao.getText(),

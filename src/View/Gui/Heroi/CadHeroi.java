@@ -19,7 +19,7 @@ import javax.swing.text.MaskFormatter;
  * no 
  * banco de dados
  *
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  */
 public class CadHeroi extends TelaPadrao{
     

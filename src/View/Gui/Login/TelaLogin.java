@@ -21,7 +21,7 @@ import javax.swing.JTextField;
  *Esta classe é responsável por criar uma interface gráfica
  *para que o usuário efetue o login na aplicação ou crie um 
  *novo login caso não possua
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  */
 public class TelaLogin extends TelaPadrao implements Runnable{
 

@@ -1,11 +1,10 @@
 package cad_heroiseviloes;
 
-import Controller.InsertArquivo;
 import View.Gui.Login.TelaLogin;
 
 /**
  *Esta classe é responsável por iniciar a aplicação
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  */
 
 public class Main {

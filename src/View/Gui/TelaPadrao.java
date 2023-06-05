@@ -8,7 +8,7 @@ import javax.swing.JFrame;
  * 
  * Classe responsável por gerar um molde para criação de telas 
  *
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  */
 public class TelaPadrao extends JFrame {
 

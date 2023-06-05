@@ -12,7 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
- * A classe AtualizarUsuario é responsável por criar a inerface gráfica para
+ * A classe AtualizarUsuario é responsável por criar a interface gráfica para
  * seja possivel atualizar o cadastro dos usuários com a chamada de método
  * atualizar da classe User
  *
@@ -83,7 +83,15 @@ public class AtualizarUsuario extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-
+    
+    /**
+    * Método responsávle por pegar os dados inseridos nos campos da
+    * interface gráfica e armazena eles em variáveis, após isso ele cria um objeto
+    * da classe Usuario e invoca o método atualizar inserindo os dados das
+    * variáveis como parametros e realiza a ação de atualizar
+    *
+    *
+    */
     private synchronized void AtualizarUsuarios() {
        
         String nomeuser = txt_nomeUsuario.getText();
@@ -96,23 +104,16 @@ public class AtualizarUsuario extends JFrame {
         }
     }
 
+    
+/**
+ *
+ * Este método destroi a tela atual e cria um novo objeto da classe
+ * menu
+ *
+ */
+
     private void voltar() {
         this.dispose();
         Menu menu = new Menu();
     }
 }
-
-/**
- * O método ({@code AtualizarUsuarios} Pega os dados inseridos nos campos da
- * interface gráfica e armazena eles em variáveis, após isso ele cria um objeto
- * da classe Usuario e invoca o método atualizar inserindo os dados das
- * variáveis como parametros e realiza a ação de atualizar)
- *
- *
- */
-/**
- *
- * O método ({@code Voltar} destroi a tela atual e cria um novo objeto da classe
- * menu)
- *
- */

@@ -13,8 +13,12 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
+ * Classe responsável por criar uma interface gráfica
+ * e capturar os dados dos campos de texto para inserir posteriormente 
+ * no 
+ * banco de dados os dados de usuários
  *
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  */
 public class Cad_User extends TelaPadrao {
      
@@ -78,6 +82,18 @@ public class Cad_User extends TelaPadrao {
         
         setVisible(true);
     }
+    
+     /**
+     * Método responsável por capturar os dados inseridos nos campos 
+     * da interface gráfica, criar um objeto da classe Usuario
+     * passando os dados no construtor do objeto , depois de criado o objeto
+     * é realizada a chamada do método inserir, desta forma inserindo os dados
+     * dos usuarios no banco de dados
+     *  
+     * 
+     * @throws ParseException Esse método lança ParseException, do qual
+     * deverá ser tratado no momento em que este método for associado a um botão
+     */
     private synchronized void CadastraUsuarios(){
     String nomeuser  = txt_nomeUsuario.getText();
     String senhauser = txt_senhaUsuario.getText();
@@ -88,6 +104,16 @@ public class Cad_User extends TelaPadrao {
         } catch (Exception e) {
         }
     }
+    
+     
+    /**
+     * Método responsável por destruir a tela atual e criar 
+     * um novo objeto da classe menu, assim redirencionando 
+     * para o menu da aplicação
+     * 
+     * @throws ParseException lança ParseException que deverá ser tratada na hora 
+     * de ativar o evento no botão da interface gráfica
+     */
     
     private void voltar ( ){
         this.dispose();

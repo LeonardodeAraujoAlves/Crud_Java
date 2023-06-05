@@ -17,7 +17,7 @@ import javax.swing.text.MaskFormatter;
  * Classe responsável por criar a interface gráfica para realizar a 
  * atualização de cadastros de heróis 
  *
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  */
 public class AtualizaHeroi extends TelaPadrao {
     

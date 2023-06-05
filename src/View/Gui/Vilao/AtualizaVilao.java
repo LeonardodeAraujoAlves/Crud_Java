@@ -14,8 +14,11 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 /**
+ * 
+ * Classe responsável por criar a interface gráfica para realizar a 
+ * atualização de cadastros de vilões 
  *
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  */
 public class AtualizaVilao extends TelaPadrao {
 
@@ -108,11 +111,24 @@ public class AtualizaVilao extends TelaPadrao {
     }
     //Agora temos que adicionar os eventos   
 
+    /**
+     * Este Método é responsável por desfazer a interface gráfica atual
+     * e criar um novo objeto da classe menu. Desta forma redirecionando
+     * o fluxo do programa, fazendo com que volte para o menu;
+     */
     private void Voltar() {
         this.dispose();
         Menu menu = new Menu();
     }
 
+    /**
+    * Método responsávle por pegar os dados inseridos nos campos da
+    * interface gráfica e armazena eles em variáveis, após isso ele cria um objeto
+    * da classe Vilao e invoca o método atualizar inserindo os dados das
+    * variáveis como parametros no construtor, chamar o método atualizar  e realiza a ação de atualizar
+    *
+    *
+    */
     private void Atualizar() {
         String nome = txt_nomeVilao.getText();
         String organizacao = txt_organizacaoVilao.getText();

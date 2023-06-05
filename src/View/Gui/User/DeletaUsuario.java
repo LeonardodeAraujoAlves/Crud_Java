@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View.Gui.User;
 
 import Controller.Usuario;
@@ -15,8 +10,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
+ * Classe responsável por criar a interface gráfica para realizar a remoção de usuários
+ * 
  *
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  */
 public class DeletaUsuario extends JFrame {
     
@@ -61,13 +58,27 @@ public class DeletaUsuario extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     
     }
-    
+    /**
+     * Método responsável por realizar a remoção do dado no banco de dados, atravéz 
+     * do valor que foi inserido pelo usuário e pego dentro do campo de texto,
+     * primeiro o valor é capturado e após isso é criado um objeto da classe Usuario,
+     * que chama o método deletar passando como parâmetro o valor que foi capturado 
+     * no campo de texto
+     * 
+     * 
+     * */
     private void deletar(){
        String nome = txt_nomeDoUsuario.getText();
        Usuario usuario = new Usuario(nome);
        usuario.deletar();
     }
-    
+    /**
+     * 
+     * Método responsável por destruir a tela atual e criar 
+     * um novo objeto da classe menu, assim redirencionando 
+     * para o menu da aplicação
+     * 
+     * */
     private void voltar(){
         this.dispose();
         Menu menu = new Menu();
