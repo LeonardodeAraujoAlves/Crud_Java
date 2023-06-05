@@ -39,6 +39,7 @@ public class ConnectionSingletonTest {
         System.out.println("getConexao");
         ConnectionSingleton instance = ConnectionSingleton.getInstance();
         Connection con = instance.getConexao();
-        assertNull(con);
+        assertNotNull(con);
     }
+    
 }
