@@ -11,10 +11,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+
 /**
- *
+ * Esta classe é responsável por representar um herói dentro do sistema de cadastro
+ * Ela estende a classe BDObject para permitir a persistência em banco de dados
+ * Possui métodos para inserir, atualizar, deletar e mostrar informações de um herói no banco de dados
  * @author L.A.A
- * @version 1.4
+ * @version 1.6
  */
 public class Heroi extends BDObject {
 
@@ -43,7 +46,12 @@ public class Heroi extends BDObject {
     
     public Heroi() {
     }
-
+    
+    /**
+     * Método responsável por retornar um PreparedStatement com a query 
+     * de inserção dos dados de um herói no banco de dados
+     * @return  PreparedStatement com a query de inserção
+     */
    @Override
    public PreparedStatement statementInserir() {
         String query = "INSERT INTO HEROI VALUES (?,?,?,?,?)";
@@ -60,6 +68,12 @@ public class Heroi extends BDObject {
         }
         return pst;
     }
+   
+   /**
+    * Método responsável por retornar um PrearedStatement com a query
+    * de remoção dos dados de um herói no banco de dados
+    * @return  PreparedStatement com a query de remoção
+    */
 
     @Override
     public PreparedStatement statementDeletar() {
@@ -73,6 +87,11 @@ public class Heroi extends BDObject {
         }
         return pst;
     }
+    /**
+     * Método responsável por retornar um PreparedStatement com a query
+     * de atualização dos dados de um heroi no banco de dados
+     * @return PreparedStatement com a query de atualização dos dados
+     */
 
     @Override
     public PreparedStatement statementAtualizar() {
@@ -93,6 +112,11 @@ public class Heroi extends BDObject {
         return pst;
     }
 
+    /**
+     * Método responsável por retornar um PreparedStatemento com a query
+     * para realizar a exibição dos dados dos herois cadastrados no banco de dados 
+     * @return PreparedStatemento com a query para exibir os dados dos herois
+     */
     @Override
     public PreparedStatement statementMostrar() {
         JFrame tela = new JFrame();

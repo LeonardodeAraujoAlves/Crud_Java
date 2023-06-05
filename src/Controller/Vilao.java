@@ -11,8 +11,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Esta classe é responsável por representar um vilão dentro do sistema de cadastro
+ * Ela estende a classe BDObject para permitir a persistência em banco de dados
+ * Possui métodos para inserir, atualizar, deletar e mostrar informações de um herói no banco de dados
  * @author L.A.A
+ * @version 1.6
  */
 public class Vilao extends BDObject {
 
@@ -47,6 +50,11 @@ public class Vilao extends BDObject {
 
     };
 
+    /**
+     * Método responsável por retornar um PreparedStatement com a query 
+     * de inserção dos dados de um vilão no banco de dados
+     * @return  PreparedStatement com a query de inserção
+     */
     @Override
     public PreparedStatement statementInserir() {
         String query = "INSERT INTO vilao VALUES (?,?,?,?,?,?,?,?)";
@@ -67,6 +75,11 @@ public class Vilao extends BDObject {
         return pst;
     }
 
+    /**
+    * Método responsável por retornar um PrearedStatement com a query
+    * de remoção dos dados de um vilão no banco de dados
+    * @return  PreparedStatement com a query de remoção
+    */
     @Override
     public PreparedStatement statementDeletar() {
         String query = "DELETE FROM VILAO WHERE nome_vilao = ?";
@@ -79,6 +92,12 @@ public class Vilao extends BDObject {
         }
         return pst;
     }
+    
+    /**
+     * Método responsável por retornar um PreparedStatement com a query
+     * de atualização dos dados de um vilão no banco de dados
+     * @return PreparedStatement com a query de atualização dos dados
+     */
 
     @Override
     public PreparedStatement statementAtualizar() {
@@ -103,6 +122,11 @@ public class Vilao extends BDObject {
         return pst;
     }
 
+    /**
+     * Método responsável por retornar um PreparedStatemento com a query
+     * para realizar a exibição dos dados dos vilões cadastrados no banco de dados 
+     * @return PreparedStatemento com a query para exibir os dados dos vilões
+     */
     @Override
     public PreparedStatement statementMostrar() {
         JFrame tela = new JFrame();

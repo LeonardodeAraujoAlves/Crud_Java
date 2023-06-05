@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
+ * Esta classe se trata de uma implementação 
+ * do padrão de projeto singleton para efetuar
+ * conexão e acesso ao banco de dados mysql
+ *
  *
  * @author L.A.A
  */
@@ -25,7 +29,7 @@ public class ConnectionSingleton {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conexao = DriverManager.getConnection(urlJDBC, usuario, senha);
-            System.out.println("Conexão functionando");
+            System.out.println("Conexão funcionando");
         } catch (ClassNotFoundException ex) {
             System.out.println("O driver não foi encontrado" + ex);
         } catch (SQLException ex) {
@@ -33,6 +37,12 @@ public class ConnectionSingleton {
         }
     }
 
+    /**
+     * Método estático que retorna a única instância da classe ConnectionSingleton.
+     * Se a instância ainda não foi criada, o método cria a instância e a retorna.
+     * 
+     * @return A instância única da classe ConnectionSingleton.
+     */
     public static synchronized ConnectionSingleton getInstance() {
 
         if (instance == null) {
@@ -41,6 +51,11 @@ public class ConnectionSingleton {
         return instance;
     }
 
+    /**
+     * Método que retorna a conexão com o banco de dados.
+     * 
+     * @return A conexão com o banco de dados.
+     */
     public synchronized Connection getConexao() {
         return this.conexao;
     }
