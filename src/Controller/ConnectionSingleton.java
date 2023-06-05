@@ -19,7 +19,7 @@ public class ConnectionSingleton {
 
     private static final String urlJDBC = "jdbc:mysql://localhost:3306/heroiseviloes";
     private static final String usuario = "root";
-    private static final String senha = "(°-°)";
+    private static final String senha = "751204Laa.15";
     
     
 

@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
  * Classe responsável por realizar os testes unitários 
  * dos métodos da classe Autenticacao
  *
- * @author L.A.A
+ * @author Leonardo de Araujo Alves
  */
 public class AutenticacaoTest {
 
