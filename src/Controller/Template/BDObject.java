@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller.Template;
 
 import java.sql.PreparedStatement;
@@ -14,7 +9,7 @@ import javax.swing.JOptionPane;
 /**
  * Esta classe se trata de um template method
  * que deverá ser implementado nas classes que
- * realizam operações no banco de dados
+ * realizam operações de persistência no banco de dados
  *
  * @author L.A.A
  */
@@ -24,7 +19,10 @@ public abstract class BDObject {
     }
     
     
-    
+    /**
+     * Método que insere um registro no banco de dados,
+     * é necessário implementar o método statementInserir na classe que herda BDObject.
+     */
    public void inserir(){
         try {            
             PreparedStatement pst = statementInserir();
@@ -40,6 +38,11 @@ public abstract class BDObject {
             System.out.println("Ocorreu um erro ao inserir no banco de dados :" + ex);
         }
    }
+   
+   /**
+     * Método que remove um registro no banco de dados,
+     * é necessário implementar o método statementDeletar na classe que herda BDObject.
+     */
    public void deletar(){
         try {
             PreparedStatement pst = statementDeletar();
@@ -54,6 +57,10 @@ public abstract class BDObject {
         }
    };
    
+   /**
+     * Método que atualiza um registro no banco de dados,
+     * é necessário implementar o método statementatualizar na classe que herda BDObject.
+     */
    public  void atualizar(){
        try {
             PreparedStatement pst = statementAtualizar();
@@ -67,6 +74,11 @@ public abstract class BDObject {
             System.out.println("Ocorreu um erro ao atualizar banco de dados :" + ex);
         }
    };
+   
+   /**
+     * Método que mostra os registros do  banco de dados,
+     * é necessário implementar o método statementMostrar na classe que herda BDObject.
+     */
    
    public void mostrar(){
        JFrame tela = new JFrame();
@@ -83,5 +95,6 @@ public abstract class BDObject {
    public abstract PreparedStatement statementDeletar();
    public abstract PreparedStatement statementAtualizar();
    public abstract PreparedStatement statementMostrar();
+   
 }
 
