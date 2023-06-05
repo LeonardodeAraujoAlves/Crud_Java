@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View.Gui.Login;
 
 import Model.Autenticacao;
@@ -23,7 +18,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
- *
+ *Esta classe é responsável por criar uma interface gráfica
+ *para que o usuário efetue o login na aplicação ou crie um 
+ *novo login caso não possua
  * @author L.A.A
  */
 public class TelaLogin extends TelaPadrao implements Runnable{
@@ -94,6 +91,23 @@ public class TelaLogin extends TelaPadrao implements Runnable{
 
     }
 
+ /**
+ *  Este método é responsável por realizar a autenticação do usuário no sistema.
+ *   Ele obtém o nome e a senha do usuário a partir dos campos de texto da interface gráfica,
+ *  cria um objeto Autenticacao e chama o método Acessa para verificar se as credenciais são válidas.
+ *  Caso a autenticação seja bem sucedida, o usuário é redirecionado para a tela do menu principal.
+ *  @throws ParseException.
+ */ 
+    
+    /**
+     *  Esté método é responsável por realizar a autenticação do usuário no sistema
+     *  ele captura os dados nos campos de texto da interface gráfica, cria um objeto
+     *  da classe Autenticacao passando como parâmetro os dados que foram capturados
+     *  , em sequida chama o método autentica que vai realizar a verificação da existência 
+     *  dos dados no banco de dados, caso os dados existam o usuário será redirecionado para o 
+     *  menu da aplicação
+     *  @throws ParseException .
+     */
     //Pegando os valores dos Campos
     private  synchronized void Logar() throws ParseException {
         String nome = txt_nomeUsuario.getText();
@@ -111,6 +125,12 @@ public class TelaLogin extends TelaPadrao implements Runnable{
 
     }
     
+    /**
+     * Este método é responsável por destruir a interface gráfica 
+     * atual e criar um objeto da classe Cad_User, desta forma redirecionando 
+     * o usuário para a tela de cadastro de usuários.
+     * @throws ParseException 
+     */
     private void CadastrarUsuario() throws ParseException {
         this.dispose();
         Cad_User cadastraUsuario = new Cad_User();
