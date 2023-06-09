@@ -13,5 +13,6 @@
   
 </p>
 <h2>Obs:</h2>
+
 <p><b>O arquivo de criação do banco de dados se encotra dentro da pasta src, assim como o arquivo para realizar inserção no banco de dados, pela thread monitora</b></p>
  
