@@ -1,0 +1,26 @@
+create database heroiseviloes;
+use heroiseviloes;
+
+create table heroi(
+    nome_heroi varchar(50) not null,
+    identidade_heroi varchar(50)  primary key not null,
+    idade_heroi int ,
+    altura_heroi float,
+    inimigo_heroi varchar(50)
+);
+
+create table vilao(
+    nome_vilao varchar(50) primary key not null,
+    organizacao_vilao varchar(50),
+    altura_vilao float,
+    inimigo_vilao varchar(50),
+    lugar_principal varchar(60),
+    arma varchar(50),
+    quant_vitimas int,
+    mascote_vilao varchar(60)
+);
+
+create table usuario(
+	nome_usuario varchar(50) primary key not null,
+    senha_usuario varchar(8)
+);

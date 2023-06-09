@@ -1,0 +1,12 @@
+root,1234
+user1,2233
+user2,1111
+geleia,3333
+coelho,4444
+gato,5555
+cachorro,2222
+papagaio,7777
+Arthas,Arthas Menethil,25,2.20
+chapolin,chaves,18,1.68
+KelThuzad,Flagelo,2.98,Arthas,NaxxRamas,Magia,800,Mr.Bigglesworth
+AlmaNegra,SR.Madruga,1.78,Chapolin,MarMorto,Mosquete,1000,Kraken
