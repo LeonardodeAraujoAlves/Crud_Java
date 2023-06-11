@@ -8,7 +8,7 @@
 <b>Implementação de um template method e aplicação do template nas classes que fazem persistência no banco de dados;</b><br>
 <b>Criação de testes unitários com o framework Junit</b><br>
 <b>Criação de formas de cadastro e autenticação;</b><br>
-<b>Documentação do código e cração do javadoc;</b><br>    
+<b>Documentação do código e criação do javadoc;</b><br>    
   
   
 </p>
