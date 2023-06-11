@@ -12,7 +12,7 @@
   
   
 </p>
-<h2>Obs:</h2>
+<h1>Obs:</h1>
 
-<p><b>O arquivo de criação do banco de dados se encotra dentro da pasta src, assim como o arquivo para realizar inserção no banco de dados, pela thread monitora</b></p>
+<h2><b>O arquivo de criação do banco de dados se encotra dentro da pasta src, assim como o arquivo para realizar inserção no banco de dados, pela thread monitora</b></h2>
  
